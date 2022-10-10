@@ -105,33 +105,33 @@ from functools import lru_cache
 # print(f'end: {c}')
 
 # c = 0
-# with open('data250922/17-243.txt') as f:
-#     data250922 = list(map(int, f.readlines()))
+# with open('data260922/17-243.txt') as f:
+#     data260922 = list(map(int, f.readlines()))
 # tmp = ()
 # mx = -20000
-# cst = max([i for i in data250922 if not(i % 171)])
-# for i in range(len(data250922) - 1):
-#     if (data250922[i] < cst or data250922[i + 1] < cst) and (data250922[i] % 2 or data250922[i + 1] % 2):
+# cst = max([i for i in data260922 if not(i % 171)])
+# for i in range(len(data260922) - 1):
+#     if (data260922[i] < cst or data260922[i + 1] < cst) and (data260922[i] % 2 or data260922[i + 1] % 2):
 #         c += 1
-#         mx = max(mx, data250922[i] + data250922[i + 1])
-#         if data250922[i] + data250922[i + 1] == mx:
-#             tmp = (data250922[i], data250922[i + 1])
+#         mx = max(mx, data260922[i] + data260922[i + 1])
+#         if data260922[i] + data260922[i + 1] == mx:
+#             tmp = (data260922[i], data260922[i + 1])
 # print(c, mx, tmp, cst)
 
-# with open('data250922/17-1.txt') as f:
-#     data250922 = list(map(int, f.readlines()))
+# with open('data260922/17-1.txt') as f:
+#     data260922 = list(map(int, f.readlines()))
 # maximus = []
 # lst = -20000
 # mn = 20000
-# for i in range(1, len(data250922) - 1):
-#     if data250922[i] > data250922[i - 1] and data250922[i] > data250922[i + 1]:
-#         maximus.append(data250922[i])
+# for i in range(1, len(data260922) - 1):
+#     if data260922[i] > data260922[i - 1] and data260922[i] > data260922[i + 1]:
+#         maximus.append(data260922[i])
 #         mn = min(mn, i - lst)
 #         lst = i
 # print(len(maximus), mn)
 
 c = 0
-with open('data250922/17-4.txt') as f:
+with open('data260922/17-4.txt') as f:
     data = list(map(int, f.readlines()))
 avg = sum(data) / len(data)
 mn = 40000
