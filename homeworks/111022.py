@@ -100,4 +100,102 @@ def toBASE(num, base):
 #         mn = min(mn, sum([data[i], data[i+1], data[i+2]]))
 # print(c, mn)
 
+# @lru_cache(None)
+# def game(x):
+#     if x >= 25:
+#         return 0
+#     tmp = []
+#     if x + 1 <= 45:
+#         tmp.append(game(x + 1))
+#     if x * 2 <= 45:
+#         tmp.append(game(x * 2))
+#     negative = [i for i in tmp if i <= 0]
+#     if len(negative) != 0:
+#         return -max(negative) + 1
+#     else:
+#         return -max(tmp)
+#
+#
+# print([i for i in range(1, 24) if game(i) == -1])
+# print([i for i in range(1, 24) if game(i) == 2])
+# print([i for i in range(1, 24) if game(i) == -2])
 
+# def f(x, n):
+#     if x > n:
+#         return 0
+#     if x == n:
+#         return 1
+#     return f(x + 1, n) + f(x * 2, n)
+#
+#
+# print(f(2, 12) * f(12, 34))
+
+# with open('data111022/24-200.txt') as f:
+#     data = list(map(lambda x: x.strip(), f.readlines()))
+# c = 0
+# for i in data:
+#     if i.startswith('195.2') and i.endswith('.14'):
+#         print(i)
+#         c += 1
+# print(c)
+
+# def nd(n):
+#     return set([x for x in range(2, n // 2 + 1) if n % x == 0])
+#
+#
+# for i in range(174457, 174506):
+#     d = nd(i)
+#     if len(d) == 2:
+#         print(sorted(d))
+
+# with open('data111022/26-j1.txt') as f:
+#     n = int(f.readline())
+#     data = sorted(list(map(int, f.readlines())))
+# c = 0
+# for i in range(n):
+#     for j in range(n - 1, i, -1):
+#         if data[i] + data[j] == 100:
+#             c += 1
+#             data[j] = 0
+# print(c)
+
+# def prime(n):
+#     if n % 2 == 0:
+#         return n == 2
+#     d = 3
+#     while d * d <= n and n % d != 0:
+#         d += 2
+#     return d * d > n
+#
+#
+# # with open('data111022/27-82a.txt') as f:
+# #     n = int(f.readline())
+# #     data = list(map(int, f.readlines()))
+# with open('data111022/27-82b.txt') as f:
+#     n = int(f.readline())
+#     data = list(map(int, f.readlines()))
+# tmp = []
+# c = 0
+# mxsumm = -10*7
+# for i in range(n-1):
+#     th = prime(data[i])
+#     ne = prime(data[i+1])
+#     if c < 9:
+#         if th and ne:
+#             tmp.append(data[i])
+#             mxsumm = max(mxsumm, sum(tmp))
+#             tmp = []
+#             c = 0
+#         elif th:
+#             c += 1
+#             tmp.append(data[i])
+#         else:
+#             tmp.append(data[i])
+#     elif ne:
+#         tmp.append(data[i])
+#         mxsumm = max(mxsumm, sum(tmp))
+#         tmp = []
+#         c = 0
+#     else:
+#         tmp.append(data[i])
+# print(mxsumm)
