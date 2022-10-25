@@ -32,7 +32,7 @@ from pprint import pprint
 ходом. 
 '''
 ##@lru_cache(None) # 43
-##def game1(x): # создаем функцию с одным входным значением
+##def game1(x): # создаем функцию с одним входным значением
 ##    if x >= 34: # условие выхода из игры
 ##        return 0
 ##    tmp = [game1(x+1), game1(x+2), game1(x+3), game1(x*2)] # массив ходов
