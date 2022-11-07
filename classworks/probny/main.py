@@ -17,14 +17,15 @@ def toBASE(num: int, base: int) -> str:
 ##        print(x, y, z, f)
 
 
-##for n in range(1, 100):
+##for n in range(1, 200):
 ##    b = bin(n)[2:]
 ##    summ = sum(map(int, b))
 ##    b += str(summ % 2)
 ##    summ = sum(map(int, b))
 ##    b += str(summ % 2)
 ##    if int(b, 2) > 108:
-##        print(n, b)
+##        print(n, b, int(b, 2))
+##        break
 
 
 ##for i in range(10000):
@@ -43,7 +44,9 @@ def toBASE(num: int, base: int) -> str:
 ##c = 0
 ##for n in product('0123456789abcdef', repeat=6):
 ##    n = ''.join(n)
-##    if not(n.startswith('1') or n.endswith('ab')):
+##    if n[0] == '0':
+##        continue
+##    if not(n.startswith('1')) and n.endswith('ab'):
 ##        c += 1
 ##print(c)
 
@@ -71,17 +74,17 @@ def toBASE(num: int, base: int) -> str:
 ##        print(a)
 
 
-##def f(n):
-##    if n == 0:
-##        return 3
-##    if 0 < n <= 15:
-##        return f(n-1)
-##    if 15 < n < 95:
-##        return 2.5 * f(n-3)
-##    return 3.3 * f(n-2)
-##
-##
-##print(f(70))
+def f(n):
+    if n == 0:
+        return 3
+    if 0 < n <= 15:
+        return f(n-1)
+    if 15 < n < 95:
+        return 2.5 * f(n-3)
+    return 3.3 * f(n-2)
+
+
+print(f(70))
 
 
 ##with open('data/17-4.txt') as f:
@@ -170,12 +173,12 @@ def toBASE(num: int, base: int) -> str:
 ##        print(i, sorted(sorted(delit, reverse=True)[:2]))
 
 
-with open('data/27-102a.txt') as f:
-    data = list(map(int, f.readlines()))
-c = 0
-for i in range(1, len(data)):
-    for j in permutations(data, r=i):
-        if reduce(lambda x, y: x * y, j) % 524288:
-            c += 1
-print(c)
-##print(reduce(lambda x, y: x * y, [1,2,3,4]))
+##with open('data/27-102a.txt') as f:
+##    data = list(map(int, f.readlines()))
+##c = 0
+##for i in range(1, len(data)):
+##    for j in permutations(data, r=i):
+##        if reduce(lambda x, y: x * y, j) % 524288:
+##            c += 1
+##print(c)
+
