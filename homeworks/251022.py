@@ -180,34 +180,32 @@ def toBASE(num: int, base: int) -> str:
 #         print(list(reversed([i for i in dels if i % 2][-2:])))
 
 
-# with open('data251022/26-81.txt') as f:
-#     n, k = map(int, f.readline().split())
-#     data = list(map(lambda x: list(map(int, x.split())), f.readlines()))
-# fly = {1: {},
-#        2: {}}
-# for i in data:
-#     if i[1] in fly[i[0]]:
-#         fly[i[0]][i[1]].append(i[2])
-#     else:
-#         fly[i[0]][i[1]] = [i[2]]
-# res = []
-# for i in fly[1]:
-#     if 2 not in fly[1][i] and 3 not in fly[1][i] and 4 not in fly[1][i] and 5 not in fly[1][i] \
-#             and 1 in fly[1][i] and 6 in fly[1][i]:
-#         res.append(i)
-# for i in fly[2]:
-#     if 2 not in fly[2][i] and 3 not in fly[2][i] and 4 not in fly[2][i] and 5 not in fly[2][i] \
-#             and 1 in fly[2][i] and 6 in fly[2][i]:
-#         res.append(i)
-# print(max(res), len(res))
+with open('data251022/26-81.txt') as f:
+     n, k = map(int, f.readline().split())
+     data = list(map(lambda x: list(map(int, x.split())), f.readlines()))
+fly = {1: {},
+        2: {}}
+for i in data:
+     if i[1] in fly[i[0]]:
+         fly[i[0]][i[1]].append(i[2])
+     else:
+         fly[i[0]][i[1]] = [i[2]]
+res = []
+for i in fly[1]:
+     if 2 not in fly[1][i] and 3 not in fly[1][i] and 4 not in fly[1][i]:
+         res.append(i)
+for i in fly[2]:
+     if 2 not in fly[2][i] and 3 not in fly[2][i] and 4 not in fly[2][i]:
+         res.append(i)
+print(max(res), len(res))
 
 
-with open('data251022/27-54a.txt') as f:
-    n = int(f.readline())
-    data = list(map(int, f.readlines()))
-mx = 0
-for i in permutations(data, r=4):
-    summ = sum(i)
-    if not(summ % 4) and summ > mx:
-        mx = summ
-print(mx)
+##with open('data251022/27-54a.txt') as f:
+##    n = int(f.readline())
+##    data = list(map(int, f.readlines()))
+##mx = 0
+##for i in permutations(data, r=4):
+##    summ = sum(i)
+##    if not(summ % 4) and summ > mx:
+##        mx = summ
+##print(mx)
