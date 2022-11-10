@@ -16,21 +16,21 @@ from itertools import product, permutations
 ##    if int(n, 2) < 171:
 ##        print(i)
 
-a=permutations('0123456789ABCDEF',r=3)
-c=0
+a = permutations('0123456789ABCDEF', r=3)
+c = 0
 for i in a:
-    i= ''.join(i)
-    if i[0]=='0':
+    i = ''.join(i)
+    if i[0] == '0':
         continue
-    f=True
+    f = True
     for s1 in '02468ACE':
         for s2 in '02468ACE':
-            if s1+s2 in i:
-                f=False
+            if s1 + s2 in i:
+                f = False
     for s1 in '13579BDF':
         for s2 in '13579BDF':
-            if s1+s2 in i:
-                f=False
+            if s1 + s2 in i:
+                f = False
     if f:
-        c+=1
+        c += 1
 print(c)
