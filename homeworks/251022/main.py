@@ -78,7 +78,7 @@ def toBASE(num: int, base: int) -> str:
 # print(f(43))
 
 
-# with open('data251022/17-282.txt') as f:
+# with open('data/17-282.txt') as f:
 #     data = list(map(int, f.readlines()))
 # summtrk = sum(map(int, toBASE(max([i for i in data if not(i % 11)]), 3)))
 # c = 0
@@ -90,7 +90,7 @@ def toBASE(num: int, base: int) -> str:
 # print(c, mn)
 
 
-# with open('data251022/18-18.txt') as f:
+# with open('data/18-18.txt') as f:
 #     data = list(map(lambda x: float(x.strip().replace(',', '.')), f.readlines()))
 # flag = False
 # mxsumm = data[0]
@@ -143,7 +143,7 @@ def toBASE(num: int, base: int) -> str:
 # print(f(2, 472, 0, 0))
 
 
-# with open('data251022/24-191.txt') as f:
+# with open('data/24-191.txt') as f:
 #     s = f.readline()
 # l = 0
 # res = 0
@@ -180,7 +180,7 @@ def toBASE(num: int, base: int) -> str:
 #         print(list(reversed([i for i in dels if i % 2][-2:])))
 
 
-with open('data251022/26-81.txt') as f:
+with open('data/26-81.txt') as f:
      n, k = map(int, f.readline().split())
      data = list(map(lambda x: list(map(int, x.split())), f.readlines()))
 fly = {1: {},
@@ -200,7 +200,7 @@ for i in fly[2]:
 print(max(res), len(res))
 
 
-##with open('data251022/27-54a.txt') as f:
+##with open('data/27-54a.txt') as f:
 ##    n = int(f.readline())
 ##    data = list(map(int, f.readlines()))
 ##mx = 0

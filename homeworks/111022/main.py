@@ -87,7 +87,7 @@ def toBASE(num, base):
 #
 #
 # c = 0
-# with open('data111022/17-316.txt') as file:
+# with open('data/17-316.txt') as file:
 #     data = list(map(int, file.readlines()))
 # mn = 30000
 # mx = -20000
@@ -130,7 +130,7 @@ def toBASE(num, base):
 #
 # print(f(2, 12) * f(12, 34))
 
-# with open('data111022/24-200.txt') as f:
+# with open('data/24-200.txt') as f:
 #     data = list(map(lambda x: x.strip(), f.readlines()))
 # c = 0
 # for i in data:
@@ -148,7 +148,7 @@ def toBASE(num, base):
 #     if len(d) == 2:
 #         print(sorted(d))
 
-# with open('data111022/26-j1.txt') as f:
+# with open('data/26-j1.txt') as f:
 #     n = int(f.readline())
 #     data = sorted(list(map(int, f.readlines())))
 # c = 0
@@ -168,10 +168,10 @@ def toBASE(num, base):
 #     return d * d > n
 #
 #
-# # with open('data111022/27-82a.txt') as f:
+# # with open('data/27-82a.txt') as f:
 # #     n = int(f.readline())
 # #     data = list(map(int, f.readlines()))
-# with open('data111022/27-82b.txt') as f:
+# with open('data/27-82b.txt') as f:
 #     n = int(f.readline())
 #     data = list(map(int, f.readlines()))
 # tmp = []

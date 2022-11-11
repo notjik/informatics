@@ -86,7 +86,7 @@ def sd(n):
 # print(F(6))
 
 # c = 0
-# with open('data031022/17-7.txt') as f:
+# with open('data/17-7.txt') as f:
 #     data = list(map(int, f.readlines()))
 # summ = 0
 # for i in range(len(data) - 2):
@@ -123,7 +123,7 @@ def sd(n):
 #
 # print(len([x for x in range(81) if f(x)]))
 
-# with open('data031022/24-4.txt') as f:
+# with open('data/24-4.txt') as f:
 #     data = f.readline()
 # alph = -1
 # l = 0
@@ -149,7 +149,7 @@ def sd(n):
 #         mx = max(mx, i)
 # print(c, mx)
 
-# with open('data031022/26-4.txt') as f:
+# with open('data/26-4.txt') as f:
 #     size, q = map(int, f.readline().split())
 #     data = list(map(int, f.readlines()))
 #     data.sort()
@@ -160,7 +160,7 @@ def sd(n):
 #     else:
 #         size -= data[i]
 
-with open('data031022/27-74b.txt') as f:
+with open('data/27-74b.txt') as f:
     n = int(f.readline())
     data = list(map(int, f.readlines()))
 c = 0
