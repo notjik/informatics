@@ -1,3 +1,3 @@
 # Informatics
  
-## Homeworks and classworks
+## School homeworks and classworks
