@@ -1,11 +1,12 @@
 from itertools import product
 from functools import reduce
 
+
 def dels(x):
     a = []
     i = 1
-    while i**2 <= x:
-        if i**2 == x:
+    while i ** 2 <= x:
+        if i ** 2 == x:
             a.append(i)
         elif x % i == 0:
             a += [i, x // i]
@@ -18,7 +19,7 @@ def prime(x):
     if x < 2:
         return False
     i = 2
-    while i**2 < x:
+    while i ** 2 < x:
         if x % i == 0:
             return False
         i += 1
@@ -76,12 +77,11 @@ def prime(x):
 res = {}
 for i in range(87921, 88188):
     sm = sum(map(int, str(i)))
-    pr = reduce(lambda a, b: a*b, map(int,  str(i)))
-    if not(sm % 14) and not(pr % 18) and pr != 0:
+    pr = reduce(lambda a, b: a * b, map(int, str(i)))
+    if not (sm % 14) and not (pr % 18) and pr != 0:
         res[pr] = sm
 for key in sorted(res.keys()):
     print(res[key], key)
-
 
 '''
 206) (А. Кабанов) Назовём маской числа последовательность цифр, в которой
