@@ -7,7 +7,7 @@ def to_base(n: int, b: int) -> str:
     while n >= b:
         n //= b
         r += alpha[n % b]
-    return r
+    return r[::-1]
 
 
 # print('x y z w f')
