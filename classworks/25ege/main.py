@@ -1,7 +1,6 @@
 from itertools import product
 from functools import reduce
 
-
 '''
 Теория
 
@@ -12,6 +11,7 @@ from functools import reduce
 # Например, 5 = (4 + 1), следовательно при возведении в 4 степень
 мы получаем число с пятью делителями
 '''
+
 
 def dels(x: int) -> list:
     a = []
@@ -30,7 +30,7 @@ def prime(x: int) -> bool:
     if x < 2:
         return False
     i = 2
-    while i ** 2 < x:
+    while i ** 2 <= x:
         if x % i == 0:
             return False
         i += 1
@@ -146,10 +146,9 @@ a = []
 for i in range(1, 10000):
     if prime(i):
         for j in range(30):
-            if 2**j*i**4 in range(55000000, 60000001):
-                a.append([2**j*i**4, i**4])
+            if 2 ** j * i ** 4 in range(55000000, 60000001):
+                a.append([2 ** j * i ** 4, i ** 4])
 print(*sorted(a, key=lambda x: x[0]), sep='\n')
-
 
 '''
 206) (А. Кабанов) Назовём маской числа последовательность цифр, в которой

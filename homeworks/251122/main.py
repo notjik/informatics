@@ -140,7 +140,7 @@ def to_base(n: int, b: int) -> str:
 #     if n < 2:
 #         return False
 #     i = 2
-#     while i**2 < n:
+#     while i**2 <= n:
 #         if not(n % i):
 #             return False
 #         i += 1
