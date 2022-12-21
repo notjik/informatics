@@ -12,7 +12,7 @@
 <strong>Instructions for use html-to-pdf.py</strong>
 </summary>
 
-### You need to install wkhtmltopdf for the script to work and enter the path to the file in «.env». 
+### You need to install [wkhtmltopdf](https://github.com/JazzCore/python-pdfkit/wiki/Installing-wkhtmltopdf) for the script to work and enter the path to the file in «.env». 
 ##### Don't forget to install «requirements.txt».
 ```commandline
 pip install -r requirements.txt
@@ -43,7 +43,7 @@ python html-to-pdf.py -I input.html -O output.pdf
 <strong>Инструкция к использованию html-to-pdf.py</strong>
 </summary>
 
-### Вам необходимо установить wkhtmltopdf для работы скрипта и ввести путь к файлу в «.env». 
+### Вам необходимо установить [wkhtmltopdf](https://github.com/JazzCore/python-pdfkit/wiki/Installing-wkhtmltopdf) для работы скрипта и ввести путь к файлу в «.env». 
 ##### Не забудьте установить «requirements.txt». 
 ```commandline
 pip install -r requirements.txt
