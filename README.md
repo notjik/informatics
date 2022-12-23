@@ -12,15 +12,19 @@
 <strong>Instructions for use html-to-pdf.py</strong>
 </summary>
 
-### You need to install [wkhtmltopdf](https://github.com/JazzCore/python-pdfkit/wiki/Installing-wkhtmltopdf) for the script to work and enter the path to the file in «.env». 
 ##### Don't forget to install «requirements.txt».
-```commandline
+```shell
 pip install -r requirements.txt
 ```
 
-##### An example of running a script:
-```commandline
-python html-to-pdf.py -I input.html -O output.pdf
+##### Example of running a script to convert a web page to PDF:
+```shell
+python html-to-pdf.py --input https://github.com/notjik --output output.pdf --mode url
+```
+
+##### Example of running a script to convert a local HTML file to PDF:
+```shell
+python html-to-pdf.py --input input.html --output output.pdf --mode local
 ```
 
 </details>
@@ -43,16 +47,21 @@ python html-to-pdf.py -I input.html -O output.pdf
 <strong>Инструкция к использованию html-to-pdf.py</strong>
 </summary>
 
-### Вам необходимо установить [wkhtmltopdf](https://github.com/JazzCore/python-pdfkit/wiki/Installing-wkhtmltopdf) для работы скрипта и ввести путь к файлу в «.env». 
 ##### Не забудьте установить «requirements.txt». 
-```commandline
+```shell
 pip install -r requirements.txt
 ```
 
-##### Пример запуска скрипта:
-```commandline
-python html-to-pdf.py -I input.html -O output.pdf
+##### Пример запуска скрипта для преобразования веб-страницы в PDF:
+```shell
+python html-to-pdf.py --input https://github.com/notjik --output output.pdf --mode url
 ```
+
+##### Пример запуска скрипта для преобразования локального HTML-файла в PDF:
+```shell
+python html-to-pdf.py --input input.html --output output.pdf --mode local
+```
+
 </details>
 
 ---

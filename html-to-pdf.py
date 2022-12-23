@@ -1,26 +1,54 @@
 import os
+import sys
 import argparse
-import pdfkit
 
-from dotenv import load_dotenv
-
-load_dotenv()
+from PyQt5 import QtCore, QtWidgets, QtWebEngineWidgets
 
 parser = argparse.ArgumentParser(prog='HtmlToPdf', description='Convert HTML files to PDF')
-parser.add_argument('-I', '--input', nargs='*', type=str, help='path to html file')
-parser.add_argument('-O', '--output', nargs='*', type=str, help='path to pdf file')
-parser = parser.parse_args()
+parser.add_argument('-I', '--input', nargs='*', type=str, help='path or url to html file', required=True)
+parser.add_argument('-O', '--output', nargs='*', type=str, help='path to pdf file', required=False)
+parser.add_argument('-M', '--mode', help='local file or url', choices=['local', 'L', 'url', 'U'], required=True)
 
-try:
-    with open(parser.input[0], encoding='utf8') as f:
-        data = f.read()
 
-    if '<meta charset="utf-8">' not in data:
-        with open(parser.input[0], 'w', encoding='utf8') as f:
-            f.write(data[:data.find('<head>') + 6] + '<meta charset="utf-8">' + data[data.find('<head>') + 6:])
-    pdfkit.from_file(parser.input[0], parser.output[0],
-                     configuration=pdfkit.configuration(wkhtmltopdf=os.getenv('path_to_wkhtmltopdf')))
-except TypeError:
-    print('Enter the path\n\nTo learn more, enter tag -h\n')
-except FileNotFoundError:
-    print('Enter the correct path\n\nTo learn more, enter tag -h\n')
+def html_to_pdf(html: str, pdf: str, mode:str):
+    app = QtWidgets.QApplication(sys.argv)
+    page = QtWebEngineWidgets.QWebEnginePage()
+
+    def handle_print_finished(filename, status):
+        print("\033[32mSuccessfully converted to «{}»!\033[0m".format(filename))
+        QtWidgets.QApplication.quit()
+
+    def handle_load_finished(status):
+        if status:
+            page.printToPdf(pdf)
+        else:
+            print("\033[31mFailed!\033[0m")
+            QtWidgets.QApplication.quit()
+
+    page.pdfPrintingFinished.connect(handle_print_finished)
+    page.loadFinished.connect(handle_load_finished)
+    if mode in ['local', 'L']:
+        page.load(QtCore.QUrl.fromLocalFile(html))
+    else:
+        page.load(QtCore.QUrl.fromUserInput(html))
+    app.exec_()
+
+
+if __name__ == "__main__":
+    parser = parser.parse_args()
+    if parser.mode in ['local', 'L']:
+        dir = os.path.abspath(os.curdir)
+        html = os.path.join(dir, ' '.join(parser.input))
+        isdir = True
+    else:
+        html = ' '.join(parser.input)
+        isdir = False
+    print('\033[34mConverting from «{}» to PDF.\n\033[0m'.format(html))
+    if parser.output:
+        pdf = ' '.join(parser.output)
+    else:
+        if isdir:
+            pdf = os.path.splitext(html)[0] + '.pdf'
+        else:
+            pdf = html.rsplit('/', 1)[-1] + '.pdf'
+    html_to_pdf(html, pdf, mode=parser.mode)
