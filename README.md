@@ -13,17 +13,17 @@
 </summary>
 
 ##### Don't forget to install «requirements.txt».
-```shell
+```commandline
 pip install -r requirements.txt
 ```
 
 ##### Example of running a script to convert a web page to PDF:
-```shell
+```commandline
 python html-to-pdf.py --input https://github.com/notjik --output output.pdf --mode url
 ```
 
 ##### Example of running a script to convert a local HTML file to PDF:
-```shell
+```commandline
 python html-to-pdf.py --input input.html --output output.pdf --mode local
 ```
 
@@ -48,17 +48,17 @@ python html-to-pdf.py --input input.html --output output.pdf --mode local
 </summary>
 
 ##### Не забудьте установить «requirements.txt». 
-```shell
+```commandline
 pip install -r requirements.txt
 ```
 
 ##### Пример запуска скрипта для преобразования веб-страницы в PDF:
-```shell
+```commandline
 python html-to-pdf.py --input https://github.com/notjik --output output.pdf --mode url
 ```
 
 ##### Пример запуска скрипта для преобразования локального HTML-файла в PDF:
-```shell
+```commandline
 python html-to-pdf.py --input input.html --output output.pdf --mode local
 ```
 
