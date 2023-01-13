@@ -31,6 +31,7 @@ python html-to-pdf.py --input input.html --output output.pdf --mode local
 
 ---
 
+###### Teacher – [@SergeyGoryainov](https://github.com/SergeyGoryainov).
 ###### Thanks to [Konstantin Polyakov's website](https://kpolyakov.spb.ru).
 
 </details>
@@ -66,6 +67,7 @@ python html-to-pdf.py --input input.html --output output.pdf --mode local
 
 ---
 
+###### Преподаватель – [@SergeyGoryainov](https://github.com/SergeyGoryainov).
 ###### Спасибо сайту [Константина Полякова](https://kpolyakov.spb.ru).
 
 </details>
