@@ -2,7 +2,7 @@ from itertools import product, permutations
 from time import time
 
 start = time()
-def timecomplite() -> None:
+def timecomplete() -> None:
     print('\nThe program was completed in {} second!'.format(time() - start))
     return None
 
@@ -27,7 +27,7 @@ def to_base(n: int, b: int) -> str:
 ##    f = int(not (x == (not y)) or ((x and w) == z))
 ##    if not f:
 ##        print(y, z, x, w, f)
-##timecomplite()
+##timecomplete()
 
 
 '''
@@ -55,7 +55,7 @@ def to_base(n: int, b: int) -> str:
 ##    if int(r, 2) < 35:
 ##        res.append(n)
 ##print(res[-1])
-##timecomplite()
+##timecomplete()
 
 
 '''
@@ -73,7 +73,7 @@ def to_base(n: int, b: int) -> str:
 ##        print('res', i)
 ##        c += 1
 ##print(c)
-##timecomplite()
+##timecomplete()
 
 
 '''
@@ -88,7 +88,7 @@ def to_base(n: int, b: int) -> str:
 ##        continue
 ##    c += 1
 ##print(c)
-##timecomplite()
+##timecomplete()
 
 
 '''
@@ -117,7 +117,7 @@ def to_base(n: int, b: int) -> str:
 ##    else:
 ##        s = s.replace('888', '2', 1)
 ##print(s)
-##timecomplite()
+##timecomplete()
     
 
 '''
@@ -125,7 +125,7 @@ def to_base(n: int, b: int) -> str:
 основанием 3. Сколько цифр «2» содержится в этой записи?
 '''
 ##print(to_base(9**20 + 3**60 - 125, 3).count('2'))
-##timecomplite()
+##timecomplete()
 
 
 '''
@@ -144,7 +144,7 @@ def to_base(n: int, b: int) -> str:
 ##    if f:
 ##        print(a)
 ##        break
-##timecomplite()
+##timecomplete()
 
 
 '''
@@ -166,7 +166,7 @@ F(n) = F(n–2) + F(n–1) при n > 3 и n ≠ 8
 ##    if f(n) == 25:
 ##        print(n)
 ##        break
-##timecomplite()
+##timecomplete()
 
 
 '''
@@ -189,4 +189,4 @@ for i in range(len(data) - 1):
         c += 1
         mavg = min(mavg, avg)
 print(c, mavg)
-timecomplite()
+timecomplete()

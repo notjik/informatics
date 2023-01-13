@@ -1,12 +1,14 @@
-from time import time
-from itertools import product
 from functools import lru_cache
+from time import time
 
 start = time()
-def timecomplite() -> None:
+
+
+def timecomplete() -> None:
     print('\nThe program was completed in {} second!'.format(time() - start))
     return None
-    
+
+
 '''
 2. Логическая функция F задаётся выражением (a ∧ c) ∨ (¬a ∧ (b ∨ ¬c)).
 Определите, какому столбцу таблицы истинности функции F соответствует
@@ -18,7 +20,7 @@ def timecomplite() -> None:
 ##for c, a, b in product([0, 1], repeat=3):
 ##    f = int((a and c) or (not a and (b or not c)))
 ##    print(c, a, b, f)
-##timecomplite()
+##timecomplete()
 
 
 '''
@@ -42,7 +44,7 @@ def timecomplite() -> None:
 ##    r = int(r, 2)
 ##    if r <= 190:
 ##        print(n)
-##timecomplite()
+##timecomplete()
 
 
 '''
@@ -58,7 +60,7 @@ s программа выведет число, не большее, чем 100.
 ##    if s <= 100:
 ##        print(i)
 ##        break
-##timecomplite()
+##timecomplete()
 
 
 '''
@@ -81,7 +83,7 @@ s программа выведет число, не большее, чем 100.
 ##    if ''.join(i) == 'КОМОД':
 ##        print(c)
 ##        break
-##timecomplite()
+##timecomplete()
 
 
 '''
@@ -113,7 +115,7 @@ s программа выведет число, не большее, чем 100.
 ##        s = s.replace('333', '5', 1)
 ##        d += 3
 ##print(d)
-##timecomplite()
+##timecomplete()
 
 
 '''
@@ -121,7 +123,7 @@ s программа выведет число, не большее, чем 100.
 счисления с основанием 8. Сколько цифр «7» в этой записи?
 '''
 ##print(oct(32**60 + 4**180 - 128)[2::].count('7'))
-##timecomplite()
+##timecomplete()
 
 
 '''
@@ -144,7 +146,7 @@ F(n) = 2 + F(n–1) при нечётных n > 0
 ##    if f(i) == -2:
 ##        c += 1
 ##print(c)
-##timecomplite()
+##timecomplete()
 
 
 '''
@@ -167,7 +169,7 @@ F(n) = 2 + F(n–1) при нечётных n > 0
 ##        c += 1
 ##        mx = max(mx, data[i] + data[i+1] + data[i+2])
 ##print(c, mx)
-##timecomplite()
+##timecomplete()
 
 
 '''
@@ -190,19 +192,21 @@ F(n) = 2 + F(n–1) при нечётных n > 0
 позволяющая ему выиграть первым или вторым ходом при любой игре Пети, и при этом у Вани нет
 стратегии, которая позволит ему гарантированно выиграть первым ходом.
 '''
-@lru_cache(None) 
+
+
+@lru_cache(None)
 def game(x, y):
     if x + y >= 87:
         return 0
-    tmp = [game(x+1,y), game(x, y+1),
-           game(x*2, y), game(x, y*2)]
+    tmp = [game(x + 1, y), game(x, y + 1),
+           game(x * 2, y), game(x, y * 2)]
     negative = [i for i in tmp if i <= 0]
     if len(negative) != 0:
-        return -max(negative)+1
+        return -max(negative) + 1
     else:
         return -max(tmp)
 
 
 print(*[i for i in range(1, 77) if game(9, i) == 2])
 print(min([i for i in range(1, 77) if game(9, i) == -2]))
-timecomplite()
+timecomplete()

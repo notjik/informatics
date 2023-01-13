@@ -2,7 +2,7 @@ from time import time
 from pprint import pprint
 
 start = time()
-def timecomplite() -> None:
+def timecomplete() -> None:
     print('\nThe program was completed in {} second!'.format(time() - start))
     return None
 
@@ -27,7 +27,7 @@ def timecomplite() -> None:
 ##            res = tmp
 ##        tmp = s[i+1]
 ##print(res, len(res))
-##timecomplite()
+##timecomplete()
 
 
 '''
@@ -49,7 +49,7 @@ Z+XYZ+XYZ+X, где цепочка начинается с Z и заканчив
 ##        if s2 in s:
 ##            res = s2
 ##print(len(res))
-##timecomplite()
+##timecomplete()
 
 
 '''
@@ -84,7 +84,7 @@ KRAKTU
 ##                break
 ##pprint(slovar)
 ##print(''.join(data).count('V'))
-##timecomplite()
+##timecomplete()
 
 
 '''
@@ -108,4 +108,4 @@ for i in range(len(s) - 1):
             res = tmp.copy()
         tmp = [[s[i+1], i+1]]
 print(res[0][1]+1)
-timecomplite()
+timecomplete()

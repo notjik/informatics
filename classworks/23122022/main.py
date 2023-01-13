@@ -2,7 +2,7 @@ from time import time
 from pprint import pprint
 
 start = time()
-def timecomplite() -> None:
+def timecomplete() -> None:
     print('\nThe program was completed in {} second!'.format(time() - start))
     return None
 
@@ -55,7 +55,7 @@ def timecomplite() -> None:
 ##    i += 1
 ##
 ##print(len(a), max(a))
-##timecomplite()
+##timecomplete()
 
 '''
 23. Найдите 5 составных (не простых) чисел больших 800000, таких, что сумма их наименьшего и

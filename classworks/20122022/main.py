@@ -2,7 +2,7 @@ from time import time
 from functools import lru_cache
 
 start = time()
-def timecomplite() -> None:
+def timecomplete() -> None:
     print('\nThe program was completed in {} second!'.format(time() - start))
     return None
 
@@ -24,7 +24,7 @@ def timecomplite() -> None:
 ##        c += 1
 ##        mx = max(mx, data[i] + data[i+1] + data[i+2])
 ##print(c, mx)
-##timecomplite()
+##timecomplete()
 
 
 '''
@@ -45,7 +45,7 @@ def timecomplite() -> None:
 ##        c += 1
 ##        mx = max(mx, data[i] + data[i+1])
 ##print(c, mx)
-##timecomplite()
+##timecomplete()
 
 
 '''
@@ -60,7 +60,7 @@ def timecomplite() -> None:
 ##res = [max(data[i:i+3]) for i in range(len(data) - 2) \
 ##       if sorted(data[i:i+3])[2]**2 == sorted(data[i:i+3])[0]**2 + sorted(data[i:i+3])[1]**2]
 ##print(len(res), sum(res))
-##timecomplite()
+##timecomplete()
         
 
 '''
@@ -102,7 +102,7 @@ def timecomplite() -> None:
 ##
 ##print(*[i for i in range(1, 25) if game(i) == 2])
 ##print(*[i for i in range(1, 25) if game(i) == -2])
-##timecomplite()
+##timecomplete()
 
 
 '''
@@ -142,7 +142,7 @@ def timecomplite() -> None:
 ##res2 = [i for i in range(1, 214) if game(17, i) == 2]
 ##print(min(res2), max(res2))
 ##print(min([i for i in range(1, 214) if game(17, i) == -2]))
-##timecomplite()
+##timecomplete()
 
 
 '''
@@ -180,4 +180,4 @@ print(len([i for i in range(1, 999) if game(i) == -1]))
 print(len([i for i in range(1, 999) if game(i) == 2]))
 res3 = [i for i in range(1, 999) if game(i) == -2]
 print(res3)
-timecomplite()
+timecomplete()

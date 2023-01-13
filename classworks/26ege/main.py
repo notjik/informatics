@@ -1,11 +1,12 @@
 from time import time
-from math import ceil
-from bisect import bisect_left
 
 start = time()
-def timecomplite() -> None:
+
+
+def timecomplete() -> None:
     print('\nThe program was completed in {} second!'.format(time() - start))
     return None
+
 
 '''
 1) В текстовом файле 26-1.txt находятся данные в формате, описанном выше в
@@ -63,7 +64,7 @@ S – размер свободного места на диске (натура
 ##    i += 1
 ##
 ##print(len(a), max(a))
-##timecomplite()
+##timecomplete()
 
 ##with open('data/26-1.txt') as f: # v2
 ##    s, n = map(int, f.readline().split())
@@ -77,7 +78,7 @@ S – размер свободного места на диске (натура
 ##    i += 1
 ##res += data[i-1]
 ##print(c, data[i-1])
-##timecomplite()
+##timecomplete()
 
 
 '''
@@ -114,33 +115,33 @@ S – размер свободного места на диске (натура
 приведённого примера:
 2 50
 '''
-##with open('data/26-11.txt') as f:
-##    m, n = map(int, f.readline().split())
-##    data = list(map(int, f.readlines()))
-##s = m
-##data.sort()
-##a = []
-##i = 0
-##flag = True
-##while flag:
-##    try:
-##        if s - data[i] >= 0:
-##            s -= data[i]
-##            a.append(data[i])
-##        else:
-##            if sum(a[:-1] + [data[i]]) <= m:
-##                a.pop(-1)
-##                s -= data[i]
-##                a.append(data[i])
-##            else:
-##                flag = False
-##        i += 1
-##    except IndexError:
-##        print('Full')
-##        break
-##
-##print(len(a), max(a))
-##timecomplite()
+# with open('data/26-11.txt') as f:
+#    m, n = map(int, f.readline().split())
+#    data = list(map(int, f.readlines()))
+# s = m
+# data.sort()
+# a = []
+# i = 0
+# flag = True
+# while flag:
+#    try:
+#        if s - data[i] >= 0:
+#            s -= data[i]
+#            a.append(data[i])
+#        else:
+#            if sum(a[:-1] + [data[i]]) <= m:
+#                a.pop(-1)
+#                s -= data[i]
+#                a.append(data[i])
+#            else:
+#                flag = False
+#        i += 1
+#    except IndexError:
+#        print('Full')
+#        break
+#
+# print(len(a), max(a))
+# timecomplete()
 
 
 '''
@@ -174,21 +175,20 @@ S – размер свободного места на диске (натура
 Тогда самый дорогой товар без скидки стоит 2500,
 а сумма скидок 740+720+520 = 1980.
 '''
-##with open('data/26-k1.txt') as f: # v1
-##    n, k = map(int, f.readline().split())
-##    data = list(map(int, f.readlines()))
-##data.sort(reverse=True)
-##print(data[k], sum(data[:k]) * 0.2)
-##timecomplite()
-
-##with open('data/26-k1.txt') as f: # v2
-##    n, k = map(int, f.readline().split())
-##    data = list(map(int, f.readlines()))
-##data.sort()
-##res = sum([data.pop() for i in range(k)])
-##print(data[-1], res * 0.2)
-##timecomplite()
-
+# with open('data/26-k1.txt') as f: # v1
+#    n, k = map(int, f.readline().split())
+#    data = list(map(int, f.readlines()))
+# data.sort(reverse=True)
+# print(data[k], sum(data[:k]) * 0.2)
+# timecomplete()
+#
+# with open('data/26-k1.txt') as f: # v2
+#    n, k = map(int, f.readline().split())
+#    data = list(map(int, f.readlines()))
+# data.sort()
+# res = sum([data.pop() for i in range(k)])
+# print(data[-1], res * 0.2)
+# timecomplete()
 
 
 '''
@@ -221,11 +221,11 @@ S – размер свободного места на диске (натура
 Пояснение: Отличники набрали 298 и 293 балла, а хорошисты 247 и 214 баллов.
 Тогда средний балл хорошистов 230,5, а средний балл отличников 295,5.
 '''
-##with open('data/26-k4.txt') as f: # v1
-##    n, k = map(int, f.readline().split())
-##    data = list(map(int, f.readlines()))
-##data.sort(reverse=True)
-##print(int(sum(data[k:2*k])/k), int(sum(data[:k])/k))
+# with open('data/26-k4.txt') as f: # v1
+#    n, k = map(int, f.readline().split())
+#    data = list(map(int, f.readlines()))
+# data.sort(reverse=True)
+# print(int(sum(data[k:2*k])/k), int(sum(data[:k])/k))
 
 
 '''
@@ -260,15 +260,15 @@ S – размер свободного места на диске (натура
 образом 10, 10, 8, 8, 12, 16, 12, 10. В ответе необходимо указать два числа
 – 2 и 14.
 '''
-##with open('data/26-J5.txt') as f:
-##    n = int(f.readline())
-##    data = list(map(int, f.readlines()))
-##res1, res2 = data.copy(), data.copy()
-##for i in range(1, n - 1):
-##    res1[i] = sorted(data[i-1:i+2])[1]
-##    res2[i] = res1[i] if res1[i] < data[i] else data[i]
-##print(res1.count(min(res1)), sum(data) - sum(res2))
-##timecomplite()
+# with open('data/26-J5.txt') as f:
+#    n = int(f.readline())
+#    data = list(map(int, f.readlines()))
+# res1, res2 = data.copy(), data.copy()
+# for i in range(1, n - 1):
+#    res1[i] = sorted(data[i-1:i+2])[1]
+#    res2[i] = res1[i] if res1[i] < data[i] else data[i]
+# print(res1.count(min(res1)), sum(data) - sum(res2))
+# timecomplete()
 
 
 '''
@@ -302,17 +302,17 @@ N – общее количество купленных товаров. Каж�
 на который будет получена скидка, стоит 192 руб. В ответе нужно записать числа
 1387 и 192.
 '''
-##with open('data/26-s1.txt') as f:
-##    n = int(f.readline())
-##    data = list(map(int, f.readlines()))
-##data100 = sorted([i for i in data if i > 100])
-##datau100 = [i for i in data if i <= 100]
-##mx = 0
-##for i in range(len(data100[:len(data100) // 2])):
-##    mx = max(mx, data100[i])
-##    data100[i] = data100[i] * 0.9
-##print(ceil(sum(data100 + datau100)), mx)
-##timecomplite()
+# with open('data/26-s1.txt') as f:
+#    n = int(f.readline())
+#    data = list(map(int, f.readlines()))
+# data100 = sorted([i for i in data if i > 100])
+# datau100 = [i for i in data if i <= 100]
+# mx = 0
+# for i in range(len(data100[:len(data100) // 2])):
+#    mx = max(mx, data100[i])
+#    data100[i] = data100[i] * 0.9
+# print(ceil(sum(data100 + datau100)), mx)
+# timecomplete()
 
 
 '''
@@ -348,16 +348,16 @@ N – общее количество купленных товаров. Каж�
 вес к отправке равен 70+60+40+91 = 261, а стоимость самого тяжёлого
 отправленного пакета равна 910.
 '''
-##with open('data/26-k6.txt') as f: 
-##    n, k = map(int, f.readline().split())
-##    data = list(map(lambda x: tuple(map(int, x.split())),f.readlines()))
-##for i in range(n-1):
-##    for j in range(n - i - 1):
-##        if (data[j+1][0] / data[j+1][1]) > (data[j][0] / data[j][1]) or ((data[j+1][0] / data[j+1][1]) == (data[j][0] / data[j][1]) and data[j+1][0] > data[j][0]):
-##            data[j+1], data[j] = data[j], data[j+1]
-##res = data[:k]
-##print(sum(i[0] for i in res), res)
-
+with open('data/26-k6.txt') as f:
+    n, k = map(int, f.readline().split())
+    data = list(map(lambda x: tuple(map(int, x.split())), f.readlines()))
+for i in range(n - 1):
+    for j in range(n - i - 1):
+        if (data[j + 1][0] / data[j + 1][1]) > (data[j][0] / data[j][1]) or \
+                ((data[j + 1][0] / data[j + 1][1]) == (data[j][0] / data[j][1]) and data[j + 1][0] > data[j][0]):
+            data[j + 1], data[j] = data[j], data[j + 1]
+res = data[:k]
+print(sum(i[0] for i in res), res[0][-1])
 
 '''
 42) Предприятие производит оптовую закупку изделий A и Z, на которую
@@ -392,28 +392,28 @@ Z 50 15
 Таким образом, всего будет куплено 2 изделия A и останется 12 рублей.
 В ответе надо записать числа 2 и 12.
 '''
-##with open('data/26-42.txt') as f: 
-##    n, s = map(int, f.readline().split())
-##    data = [(i[0], int(i[1]), int(i[2]))
-##            for i in map(lambda x: tuple(x.split()),f.readlines())]
-##dataz = list(filter(lambda x: x[0] == 'Z', data))
-##buya = s - sum([i[1] * i[2] for i in dataz])
-##dataa = list(filter(lambda x: x[0] == 'A', data))
-##dataa.sort(key=lambda x: x[1])
-##c = 0
-##for p in dataa:
-##    if buya >= p[1] * p[2]:
-##        c += p[2]
-##        buya -= p[1] * p[2]
-##    else:
-##        for i in range(p[2]):
-##            if buya >= p[1]:
-##                c += 1
-##                buya -= p[1]
-##            else:
-##                break
-##print(c, buya)
-##timecomplite()
+# with open('data/26-42.txt') as f:
+#    n, s = map(int, f.readline().split())
+#    data = [(i[0], int(i[1]), int(i[2]))
+#            for i in map(lambda x: tuple(x.split()),f.readlines())]
+# dataz = list(filter(lambda x: x[0] == 'Z', data))
+# buya = s - sum([i[1] * i[2] for i in dataz])
+# dataa = list(filter(lambda x: x[0] == 'A', data))
+# dataa.sort(key=lambda x: x[1])
+# c = 0
+# for p in dataa:
+#    if buya >= p[1] * p[2]:
+#        c += p[2]
+#        buya -= p[1] * p[2]
+#    else:
+#        for i in range(p[2]):
+#            if buya >= p[1]:
+#                c += 1
+#                buya -= p[1]
+#            else:
+#                break
+# print(c, buya)
+# timecomplete()
 
 
 '''
@@ -439,21 +439,21 @@ Z 50 15
 14 и 2 (среднее арифметическое 8), 11 и 17 (среднее арифметическое 14).
 В ответе надо записать числа 3 и 14.
 '''
-##with open('data/26-45.txt') as f: 
-##    n = int(f.readline())
-##    data = list(map(int, f.readlines()))
-##data.sort()
-##c, mxavg = 0, 0
-##for i in range(n):
-##    for j in range(i + 1, n):
-##        if not ((data[i] + data[j]) % 2):
-##            avg = (data[i] + data[j]) // 2
-##            p = bisect_left(data, avg)
-##            if data[p] == avg:
-##                c += 1
-##                mxavg = max(mxavg, avg)
-##print(c, mxavg)
-##timecomplite()
+# with open('data/26-45.txt') as f:
+#    n = int(f.readline())
+#    data = list(map(int, f.readlines()))
+# data.sort()
+# c, mxavg = 0, 0
+# for i in range(n):
+#    for j in range(i + 1, n):
+#        if not ((data[i] + data[j]) % 2):
+#            avg = (data[i] + data[j]) // 2
+#            p = bisect_left(data, avg)
+#            if data[p] == avg:
+#                c += 1
+#                mxavg = max(mxavg, avg)
+# print(c, mxavg)
+# timecomplete()
 
 
 '''
@@ -478,23 +478,52 @@ Z 50 15
 – две сварки. И затем взяли 11,8,6 и 5, ровно 30, без обреза – три сварки.
 Итого: 6 сварок и 3 оставшихся куска оптоволокна. 
 '''
-with open('data/26-57.txt') as f: 
-    n, m = map(int, f.readline().split())
-    data = list(map(int, f.readlines()))
-c = 0
-while sum(data) > m:
-    data.sort()
-    tmp = 0
-    while tmp < m:
-        c += 1
-        find = bisect_left(data, m - tmp)
-        if find < len(data):
-            tmp += data.pop(find)
-        else:
-            tmp += data.pop(find - 1)
-    d = tmp - m
-    if d:
-        data.append(tmp - m)
-print(c, len(data))
-timecomplite()
-    
+# with open('data/26-57.txt') as f: # TODO: dont complete
+#     n, m = map(int, f.readline().split())
+#     data = list(map(int, f.readlines()))
+# c = 0
+# while sum(data) > m:
+#     data.sort()
+#     tmp = 0
+#     while tmp < m:
+#         c += 1
+#         find = bisect_left(data, m - tmp)
+#         if find == len(data):
+#             tmp += data.pop()
+#         else:
+#             tmp += data.pop(find)
+#     d = tmp - m
+#     if d:
+#         data.append(tmp - m)
+# print(c, len(data))
+# timecomplete()
+
+# with open('data/26-57.txt') as f:
+#     n, m = map(int, f.readline().split())
+#     data = list(map(int, f.readlines()))
+# data.sort()
+# res = rest = 0
+# while len(data):
+#     tmp = m
+#     count = 0
+#     while data and tmp:
+#         find: int = bisect_left(data, tmp)
+#         if find == len(data):
+#             tmp -= data.pop()
+#             count += 1
+#         elif data[find] <= tmp:
+#             tmp -= data.pop(find)
+#             count += 1
+#         elif data[find] > tmp:
+#             r = data[find] - tmp
+#             data.pop(find)
+#             tmp = 0
+#             find = bisect_left(data, r)
+#             data.insert(find, r)
+#             count += 1
+#     if not tmp:
+#         res += count - 1
+#     else:
+#         rest = count
+# print(res, rest)
+# timecomplete()
