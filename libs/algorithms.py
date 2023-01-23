@@ -6,8 +6,8 @@ class Sort:
     # TODO: Bubble sorting method (https://sortvisualizer.com/bubblesort/)
     # TODO: Метод сортировки пузырьком (https://sortvisualizer.com/bubblesort/)
     def bubble(array: list | tuple | str,
-               alg: Callable[[int | float | str, int | float | str], bool] = lambda x, y: x < y,
-               reverse: bool = False):
+               reverse: bool = False,
+               alg: Callable[[int | float | str, int | float | str], bool] = lambda x, y: x < y):
         tp = type(array)
         if tp != list:
             array = list(array)
@@ -21,8 +21,8 @@ class Sort:
     # TODO: Shaker sorting method (https://sortvisualizer.com/shakersort/)
     # TODO: Метод сортировки шейкером (https://sortvisualizer.com/shakersort/)
     def shaker(array: list | tuple | str,
-               alg: Callable[[int | float | str, int | float | str], bool] = lambda x, y: x < y,
-               reverse: bool = False):
+               reverse: bool = False,
+               alg: Callable[[int | float | str, int | float | str], bool] = lambda x, y: x < y):
         tp = type(array)
         if tp != list:
             array = list(array)
@@ -42,8 +42,8 @@ class Sort:
     # TODO: Insertion sorting method (https://sortvisualizer.com/insertionsort/)
     # TODO: Метод сортировки вставками (https://sortvisualizer.com/insertionsort/)
     def insertion(array: list | tuple | str,
-                  alg: Callable[[int | float | str, int | float | str], bool] = lambda x, y: x < y,
-                  reverse: bool = False):
+                  reverse: bool = False,
+                  alg: Callable[[int | float | str, int | float | str], bool] = lambda x, y: x < y):
         tp = type(array)
         if tp != list:
             array = list(array)
@@ -60,8 +60,8 @@ class Sort:
     # TODO: Selection sorting method (https://sortvisualizer.com/selectionsort/)
     # TODO: Метод сортировки выборкой (https://sortvisualizer.com/selectionsort/)
     def selection(array: list | tuple | str,
-                  alg: Callable[[int | float | str, int | float | str], bool] = lambda x, y: x < y,
-                  reverse: bool = False):
+                  reverse: bool = False,
+                  alg: Callable[[int | float | str, int | float | str], bool] = lambda x, y: x < y):
         tp = type(array)
         if tp != list:
             array = list(array)
@@ -103,8 +103,8 @@ class Sort:
                 left, right = array[:mediana], array[mediana:]
             else:
                 left, right = array[mediana:], array[:mediana]
-            Sort.merge(left)
-            Sort.merge(right)
+            Sort.merge(array=left, reverse=reverse)
+            Sort.merge(array=right, reverse=reverse)
             i = j = k = 0
             while i < len(left) and j < len(right):
                 if left[i] < right[j]:
@@ -130,8 +130,8 @@ class Sort:
     def quick(array: list | tuple | str,
               mni: int = 0,
               mxi: int | None = None,
-              alg: Callable[[int | float | str, int | float | str], bool] = lambda x, y: x < y,
-              reverse: bool = False):
+              reverse: bool = False,
+              alg: Callable[[int | float | str, int | float | str], bool] = lambda x, y: x < y):
         def partition(array: list,
                       mni: int,
                       mxi: int):
@@ -202,7 +202,7 @@ if __name__ == '__main__':
 
     print('Merge:')
     print('Before: {}'.format(array))
-    print('After: {}'.format(Sort.bubble(array[:])))
+    print('After: {}'.format(Sort.bubble(array[:], reverse=True)))
     print('{} operations per {}\n'.format(operations, timeit('Sort.merge({})'.format(array[:]) if type(array) != str
                                                              else 'Sort.merge("{}")'.format(array[:]),
                                                              'from __main__ import Sort', number=operations)))
