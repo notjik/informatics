@@ -39,8 +39,8 @@ class Sort:
         return ''.join(array) if tp == str else tp(array)
 
     @staticmethod
-    # TODO: Insertion sorting method (https://sortvisualizer.com/shakersort/)
-    # TODO: Метод сортировки вставками (https://sortvisualizer.com/shakersort/)
+    # TODO: Insertion sorting method (https://sortvisualizer.com/insertionsort/)
+    # TODO: Метод сортировки вставками (https://sortvisualizer.com/insertionsort/)
     def insertion(array: list | tuple | str,
                   alg: Callable[[int | float | str, int | float | str], bool] = lambda x, y: x < y,
                   reverse: bool = False):
