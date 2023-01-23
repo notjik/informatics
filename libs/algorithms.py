@@ -1,16 +1,31 @@
+from typing import Callable
+
+
 class Sort:
     @staticmethod
     # TODO: Метод сортировки пузырьком (https://sortvisualizer.com/bubblesort/)
-    def bubble(array, alg=lambda x, y: x < y, reverse=False):
+    def bubble(array: list | tuple | str,
+               alg: Callable[[int | float | str, int | float | str], list] = lambda x, y: x < y,
+               reverse: bool = False):
+        tp = type(array)
+        if tp != list:
+            array = list(array)
         for i in range(len(array) - 1):
             for j in range(len(array) - i - 1):
                 if alg(array[j + 1], array[j]) if not reverse else alg(array[j], array[j + 1]):
                     array[j + 1], array[j] = array[j], array[j + 1]
-        return array
+        if tp == str:
+            return ''.join(array)
+        return tp(array)
 
     @staticmethod
     # TODO: Метод сортировки шейкером (https://sortvisualizer.com/shakersort/)
-    def shaker(array, alg=lambda x, y: x < y, reverse=False):
+    def shaker(array: list | tuple | str,
+               alg: Callable[[int | float | str, int | float | str], list] = lambda x, y: x < y,
+               reverse: bool = False):
+        tp = type(array)
+        if tp != list:
+            array = list(array)
         left, right = 0, len(array) - 1
         while left <= right:
             for i in range(right, left, -1):
@@ -21,11 +36,18 @@ class Sort:
                 if alg(array[i + 1], array[i]) if not reverse else alg(array[i], array[i + 1]):
                     array[i], array[i + 1] = array[i + 1], array[i]
             right -= 1
-        return array
+        if tp == str:
+            return ''.join(array)
+        return tp(array)
 
     @staticmethod
     # TODO: Метод сортировки вставками (https://sortvisualizer.com/shakersort/)
-    def insertion(array, alg=lambda x, y: x < y, reverse=False):
+    def insertion(array: list | tuple | str,
+                  alg: Callable[[int | float | str, int | float | str], list] = lambda x, y: x < y,
+                  reverse: bool = False):
+        tp = type(array)
+        if tp != list:
+            array = list(array)
         for i in range(1, len(array)):
             x = array[i]
             j = i - 1
@@ -33,11 +55,15 @@ class Sort:
                 array[j + 1] = array[j]
                 j -= 1
             array[j + 1] = x
-        return array
+        if tp == str:
+            return ''.join(array)
+        return tp(array)
 
     @staticmethod
     # TODO: Метод сортировки вставками (https://www.cs.usfca.edu/~galles/visualization/CountingSort.html)
-    def counting(array, reverse=False):
+    def counting(array: list | tuple,
+                 reverse: bool = False):
+        tp = type(array)
         array_init = [0] * (max(array) + 1)
         result = []
         for i in range(len(array)):
@@ -46,11 +72,17 @@ class Sort:
             if array_init[i]:
                 for k in range(array_init[i]):
                     result.append(i)
-        return result
+        if tp == str:
+            return ''.join(array)
+        return tp(result)
 
     @staticmethod
     # TODO: Метод сортировки Хоара (https://sortvisualizer.com/quicksort/)
-    def quick(array, mni=0, mxi=None, alg=lambda x, y: x < y, reverse=False):
+    def quick(array: list | tuple | str,
+              mni: int = 0,
+              mxi: int | None = None,
+              alg: Callable[[int | float | str, int | float | str], list] = lambda x, y: x < y,
+              reverse: bool = False):
         def partition(array, mni, mxi):
             pivot = mni
             for i in range(mni + 1, mxi + 1):
@@ -60,45 +92,57 @@ class Sort:
             array[pivot], array[mni] = array[mni], array[pivot]
             return pivot
 
+        tp = type(array)
+        if tp != list:
+            array = list(array)
         if mxi is None:
             mxi = len(array) - 1
-
         if mni >= mxi:
             return
         pivot = partition(array, mni, mxi)
         Sort.quick(array=array, mni=mni, mxi=pivot - 1, alg=alg, reverse=reverse)
         Sort.quick(array=array, mni=pivot + 1, mxi=mxi, alg=alg, reverse=reverse)
-        return array
+        if tp == str:
+            return ''.join(array)
+        return tp(array)
 
 
 if __name__ == '__main__':
     from timeit import timeit
-    from random import randint
+    from random import randint, choices
 
-    array = [randint(0, 1000) for r in range(10)]
+    l = 10
+    array = [randint(0, 1000) for r in range(l)]
+    # array = ''.join(choices(''.join(chr(i) for i in range(65, 91)), k=l))
     operations = 100000
-    print('\nBubble:')
+
+    print('Bubble:')
     print('Before: {}'.format(array))
-    print('After: {}'.format(Sort.bubble(array=array[:])))
-    print('{} operations per {}'.format(operations, timeit('Sort.bubble({})'.format(array),
+    print('After: {}'.format(Sort.bubble(array[:])))
+    print('{} operations per {}'.format(operations, timeit('Sort.bubble({})'.format(array[:]) if type(array) != str
+                                                           else 'Sort.bubble("{}")'.format(array[:]),
                                                            'from __main__ import Sort', number=operations)))
     print('\nShaker:')
     print('Before: {}'.format(array))
-    print('After: {}'.format(Sort.shaker(array=array[:])))
-    print('{} operations per {}'.format(operations, timeit('Sort.shaker({})'.format(array),
+    print('After: {}'.format(Sort.shaker(array[:])))
+    print('{} operations per {}'.format(operations, timeit('Sort.shaker({})'.format(array[:]) if type(array) != str
+                                                           else 'Sort.shaker("{}")'.format(array[:]),
                                                            'from __main__ import Sort', number=operations)))
     print('\nInsertion:')
     print('Before: {}'.format(array))
-    print('After: {}'.format(Sort.insertion(array=array[:])))
-    print('{} operations per {}'.format(operations, timeit('Sort.insertion({})'.format(array),
+    print('After: {}'.format(Sort.insertion(array[:])))
+    print('{} operations per {}'.format(operations, timeit('Sort.insertion({})'.format(array[:]) if type(array) != str
+                                                           else 'Sort.insertion("{}")'.format(array[:]),
                                                            'from __main__ import Sort', number=operations)))
-    print('\nCounting:')
-    print('Before: {}'.format(array))
-    print('After: {}'.format(Sort.counting(array=array[:], reverse=True)))
-    print('{} operations per {}'.format(operations, timeit('Sort.counting({})'.format(array),
-                                                           'from __main__ import Sort', number=operations)))
+    if type(array) != str:
+        print('\nCounting:')
+        print('Before: {}'.format(array))
+        print('After: {}'.format(Sort.counting(array[:], reverse=True)))
+        print('{} operations per {}'.format(operations, timeit('Sort.counting({})'.format(array[:]),
+                                                               'from __main__ import Sort', number=operations)))
     print('\nQuick:')
     print('Before: {}'.format(array))
-    print('After: {}'.format(Sort.quick(array=array[:])))
-    print('{} operations per {}'.format(operations, timeit('Sort.quick({})'.format(array),
+    print('After: {}'.format(Sort.quick(array[:])))
+    print('{} operations per {}'.format(operations, timeit('Sort.quick({})'.format(array[:]) if type(array) != str
+                                                           else 'Sort.quick("{}")'.format(array[:]),
                                                            'from __main__ import Sort', number=operations)))
