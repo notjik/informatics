@@ -27,6 +27,8 @@ python html-to-pdf.py --input https://github.com/notjik --output output.pdf --mo
 python html-to-pdf.py --input input.html --output output.pdf --mode local
 ```
 
+###### Taken from [stackoverflow](https://stackoverflow.com/questions/63382399/how-to-convert-a-local-html-file-to-pdf-using-pyqt5) and upgraded.
+
 </details>
 
 ---
@@ -62,6 +64,8 @@ python html-to-pdf.py --input https://github.com/notjik --output output.pdf --mo
 ```commandline
 python html-to-pdf.py --input input.html --output output.pdf --mode local
 ```
+
+###### Взято со [stackoverflow](https://stackoverflow.com/questions/63382399/how-to-convert-a-local-html-file-to-pdf-using-pyqt5) и модернизированно.
 
 </details>
 
