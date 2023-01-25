@@ -86,7 +86,7 @@ A – 1, B – 010, C – 000.
 ##    if b == 55:
 ##        print(i)
 ##        break
-    
+
 
 """
 7. Для хранения произвольного растрового изображения размером 128×320 пикселей отведено 20
@@ -222,8 +222,10 @@ F(n) = 7·(n - 1) + F(n - 1) при n > 0
 """
 ### TODO: Ответ – 43
 ##def is_prime(n: int) -> bool:
+##    if n < 2:
+##        return False
 ##    i = 2
-##    while i * i <= x:
+##    while i * i <= n:
 ##        if n % i == 0:
 ##            return False
 ##        i += 1
@@ -247,15 +249,15 @@ F(n) = 7·(n - 1) + F(n - 1) при n > 0
 сначала количество найденных троек, а затем – максимальную сумму элементов таких троек. В
 данной задаче под тройкой подразумевается три идущих подряд элемента последовательности.
 """
-### TODO: Ответ – don't complite
+# TODO: Ответ – 203 7191
 with open('data/17-1.txt') as f:
     data = list(map(int, f.readlines()))
 avg = sum(data) / len(data)
 c = 0
 mx = -30000
 for i in range(len(data)-2):
-    f = [i < avg for i in data[i:i+4]]
-    if len(f) > 2 and all(('1' in str(data[i]), '1' in str(data[i+1]), '1' in str(data[i+2]))):
+    f = [i < avg for i in data[i:i+3]]
+    if f.count(True) >= 2 and all(('1' in str(data[i]), '1' in str(data[i+1]), '1' in str(data[i+2]))):
         c += 1
-        mx = max(mx, sum(data[i:i+4]))
+        mx = max(mx, sum(data[i:i+3]))
 print(c, mx)
