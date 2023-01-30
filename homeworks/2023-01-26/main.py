@@ -413,29 +413,29 @@ K≥1 камней, а во второй – S≥1 камней, K+S ≤ 43.
 3. Для каждого из 5 найденных чисел выводится само число, а затем его минимальный трехзначный
 делитель, оканчивающийся на 3.
 """
-# # TODO: Ответ –
-# #  991027013 23
-# #  991027020 3
-# #  991027044 3
-# #  991027066 103
-# #  991027080 3
-# number = -1
-# for i in range(999, 99, -1):
-#     if DivFunc.is_prime(i):
-#         number = i
-#         break
-# if number != -1:
-#     number **= 3
-# else:
-#     raise SystemExit('Не найдено максимальное простое двузначное число')
-# res = []
-# for i in range(number, number**2):
-#     divisors_ending_in_3 = [j for j in DivFunc.divisor(i) if j % 10 == 3]
-#     if len(divisors_ending_in_3) == 3:
-#         res.append([i, min(divisors_ending_in_3)])
-#     if len(res) >= 5:
-#         break
-# [print(*i) for i in res]
+### TODO: Ответ –
+###  991027289 113
+###  991027818 153
+###  991027869 213
+###  991027905 173
+###  991027933 203
+number = -1
+for i in range(999, 99, -1):
+    if utils.NumbersProperties.is_prime(i):
+        number = i
+        break
+if number != -1:
+    number **= 3
+else:
+    raise SystemExit('Не найдено максимальное простое двузначное число')
+res = []
+for i in range(number, number**2):
+    divisors_ending_in_3 = [j for j in utils.NumbersProperties.divisors(i) if j % 10 == 3 and 100 <= j <= 999]
+    if len(divisors_ending_in_3) == 3:
+        res.append([i, min(divisors_ending_in_3)])
+    if len(res) >= 5:
+        break
+[print(*i) for i in res]
 
 
 """
@@ -468,16 +468,16 @@ K≥1 камней, а во второй – S≥1 камней, K+S ≤ 43.
 стоимость самого тяжёлого отправленного пакета равна 910.
 """
 # # TODO: Ответ – 5931 800
-with open('data/26-k6.txt') as f:
-    n, k = map(int, f.readline().split())
-    data = list(map(lambda x: tuple(map(int, x.split())), f.readlines()))
-for i in range(n - 1):
-    for j in range(n - i - 1):
-        if (data[j + 1][0] / data[j + 1][1]) > (data[j][0] / data[j][1]) or \
-                ((data[j + 1][0] / data[j + 1][1]) == (data[j][0] / data[j][1]) and data[j + 1][0] > data[j][0]):
-            data[j + 1], data[j] = data[j], data[j + 1]
-res = data[:k]
-print(sum(i[0] for i in res), res[0][-1])
+##with open('data/26-k6.txt') as f:
+##    n, k = map(int, f.readline().split())
+##    data = list(map(lambda x: tuple(map(int, x.split())), f.readlines()))
+##for i in range(n - 1):
+##    for j in range(n - i - 1):
+##        if (data[j + 1][0] / data[j + 1][1]) > (data[j][0] / data[j][1]) or \
+##                ((data[j + 1][0] / data[j + 1][1]) == (data[j][0] / data[j][1]) and data[j + 1][0] > data[j][0]):
+##            data[j + 1], data[j] = data[j], data[j + 1]
+##res = data[:k]
+##print(sum(i[0] for i in res), res[0][-1])
 
 """
 25. (Л. Шастин) На вход программе поступает последовательность натуральных чисел. Назовём
@@ -515,7 +515,7 @@ print(sum(i[0] for i in res), res[0][-1])
 #     return c
 #
 #
-# # TODO: Ответ – 101
+# # TODO: Ответ – 101 400476
 # with open('data/27-117a.txt') as f:
 #     n, d = map(int, f.readline().split())
 #     data = list(map(int, f.readlines()))
