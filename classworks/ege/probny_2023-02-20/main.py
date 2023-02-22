@@ -101,23 +101,28 @@ def to_base(n, b):
 Повтори 5 [ Повтори 3 [ Вперед 2 Направо 270] Вперед 4]
 Найдите минимальную площадь выпуклого многоугольника, включающего фигуру
 '''
-### TODO: Ответ – 20
+### TODO: Ответ – 36
 ##from turtle import *
 ##
 ##left(90)
 ##m = 20
 ##color('black', 'red')
 ##begin_fill()
+##speed(1)
 ##
 ##for _ in range(5):
 ##    for __ in range(3):
 ##        forward(2*m)
 ##        right(270)
 ##    forward(4*m)
-##    
+##
 ##end_fill()
+##penup()
+##for x in range(-10*m, 10*m, m):
+##    for y in range(-10*m, 10*m, m):
+##        goto(x, y)
+##        dot(3, 'green')
 ##mainloop()
-
 
 '''
 7. Автоматическая фотокамера каждые 6 с создаёт черно-белое растровое изображение, содержащее
@@ -233,16 +238,16 @@ def to_base(n, b):
 X)?
 '''
 ### TODO: Ответ – 8
-for a in range(1, 100000):
-    flag = True
-    for x in range(1, 100000):
-        f = not (x & 87 == 0) or (not (x & 31 != 0) or (x & a != 0))
-        if not f:
-            flag = False
-            break
-    if flag:
-        print(a)
-        break
+##for a in range(1, 100000):
+##    flag = True
+##    for x in range(1, 100000):
+##        f = not (x & 87 == 0) or (not (x & 31 != 0) or (x & a != 0))
+##        if not f:
+##            flag = False
+##            break
+##    if flag:
+##        print(a)
+##        break
 
 
 '''
@@ -292,7 +297,7 @@ F(n) = - F(-n), если n < 0.
 максимально возможной суммы.
 Исходные данные записаны в виде столбца электронной таблицы в файле 18-77.xls
 '''
-### TODO: Ответ – 82
+### TODO: Ответ – 58
 
 
 '''
@@ -315,7 +320,7 @@ F(n) = - F(-n), если n < 0.
 стратегии, которая позволит ему гарантированно выиграть первым ходом.
 '''
 ### TODO: Ответ –
-###  1: 76
+###  1: 17
 ###  2: 29 32
 ###  3: 28
 ##@lru_cache(None)
@@ -331,7 +336,7 @@ F(n) = - F(-n), если n < 0.
 ##        return -max(tmp)
 ##
 ##
-##print(*[s for s in range(1, 67) if game(8, s) == 2])
+##print(*[s for s in range(1, 67) if game(8, s) == 2]) # '*' -> раскрывает список
 ##print(min([s for s in range(1, 67) if game(8, s) == -2]))
 
 
@@ -517,4 +522,3 @@ F(n) = - F(-n), если n < 0.
 ##            mx = max(mx, int(mk))
 ##            print(mk, sum(map(int, str(mx))))
 ##print(sum(map(int, str(mx))))
-
