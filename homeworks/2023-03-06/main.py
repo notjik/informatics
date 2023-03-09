@@ -132,16 +132,14 @@ from itertools import combinations, product
 Исходные данные записаны в виде столбца электронной таблицы в файле 18-k3.xls.
 """
 # # TODO: Ответ – 20703
-# with open('data/18-k3.txt') as f:
-#     data = list(map(int, f.readlines()))
-# c = 0
-# for i in range(len(data)):
-#     start = max(i, 5)
-#     end = min(i, len(data) - 5)
-#     for interval in set(combinations(data[start - 5:end + 6], r=2)):
-#         if 1000 < sum(interval) < 1500:
-#             c += 1
-# print(c)
+with open('data/18-k3.txt') as f:
+    data = list(map(int, f.readlines()))
+c = 0
+for i in range(len(data)-4):
+    for j in range(i + 1, i + 5):
+        if 1000 < data[i] + data[j] < 1500:
+            c+= 1
+print(c)
 
 
 """
