@@ -521,30 +521,32 @@ N(k) имеет нечётное количество различных чёт�
 2
 При таких входных данных ответ будет 31 и 4: в локальную папку отложены архивы размером 12, 11, 6 и 2.
 """
-# # FIXME: Ответ – Верный 3851 32 | Мой 3854 32
-# with open('data/26-56.txt') as f:
-#     v, k, n = map(int, f.readline().split())
-#     data = list(map(int, f.readlines()))
-# data.sort(reverse=True)
-# drives = [v] * k
-# current_drive_index = 0
-# overflow = 0
-# local = []
-# for archive in data:
-#     while True:
-#         if drives[current_drive_index] - archive >= 0:
-#             drives[current_drive_index] -= archive
-#             current_drive_index = (current_drive_index + 1) % k
-#             overflow = 0
-#             break
-#         else:
-#             current_drive_index = (current_drive_index + 1) % k
-#             overflow += 1
-#             if overflow >= k:
-#                 local.append(archive)
-#                 break
-# print(local)
-# print(sum(local), len(local))
+# # TODO: Ответ – 3851 32
+##with open('data/26-56.txt') as f:
+##    v, k, n = map(int, f.readline().split())
+##    data = list(map(int, f.readlines()))
+##data.sort(reverse=True)
+##drives = [v] * k
+##current_drive_index = 0
+##overflow = 0
+##local = []
+##for archive in data:
+##    while True:
+##        if drives[current_drive_index] - archive >= 0:
+##            drives[current_drive_index] -= archive
+##            current_drive_index = (current_drive_index + 1) % k
+##            overflow = 0
+##            break
+##        else:
+##            overflow += 1
+##            if overflow >= k:
+##                local.append(archive)
+##                overflow = 0
+##                break
+##            else:
+##                current_drive_index = (current_drive_index + 1) % k
+##print(local)
+##print(sum(local), len(local))
 
 
 """
