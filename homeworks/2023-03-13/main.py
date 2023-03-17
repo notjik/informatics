@@ -457,22 +457,22 @@ F(n) = F(n / 2) в остальных случаях
 # #  10744 10856
 # #  12285 14595
 # #  17296 18416
-# def nontrivial_divisors(n):
-#     r = [1]
-#     i = 2
-#     while i ** 2 <= n:
-#         if i ** 2 == n:
-#             r.append(i)
-#         elif not n % i:
-#             r += [i, n // i]
-#         i += 1
-#     return r
-#
-#
-# for i in range(2, 30001):
-#     summ = sum(nontrivial_divisors(i))
-#     if summ > i == sum(nontrivial_divisors(summ)):
-#         print(i, summ)
+def nontrivial_divisors(n):
+    r = []
+    i = 2
+    while i ** 2 <= n:
+        if i ** 2 == n:
+            r.append(i)
+        elif not n % i:
+            r += [i, n // i]
+        i += 1
+    return r
+
+
+for i in range(2, 30001):
+    summ = sum(nontrivial_divisors(i)) + 1
+    if summ > i == sum(nontrivial_divisors(summ)) + 1:
+       print(i, summ)
 
 
 '''
@@ -503,15 +503,65 @@ F(n) = F(n / 2) в остальных случаях
 файла из перечисленных пар – 50, поэтому ответ для приведённого примера: 2 50
 '''
 # # TODO: Ответ – 1503 64
-with open('data/26-13.txt') as f:
-    s, n = map(int, f.readline().split())
-    data = list(map(int, f.readlines()))
-data.sort()
-res, c, i = 0, 0, 0
-while res + data[i] <= s:
-    res, c, i = res + data[i], c + 1, i + 1
-res -= data[i - 1]
-while res + data[i] <= s:
-    i += 1
-res += data[i - 1]
-print(c, data[i - 1])
+##with open('data/26-13.txt') as f:
+##    s, n = map(int, f.readline().split())
+##    data = list(map(int, f.readlines()))
+##data.sort()
+##res, c, i = 0, 0, 0
+##while res + data[i] <= s:
+##    res, c, i = res + data[i], c + 1, i + 1
+##res -= data[i - 1]
+##while res + data[i] <= s:
+##    i += 1
+##res += data[i - 1]
+##print(c, data[i - 1])
+
+
+'''
+27 В файле записана последовательность натуральных чисел. Гарантируется, что все числа
+различны. Из этой последовательности нужно выбрать три числа, чтобы их сумма делилась
+на 3 и была наименьшей. Какую наименьшую сумму можно при этом получить?
+Входные данные. Даны два входных файла (файл A и файл B), каждый из которых
+содержит в первой строке количество чисел N (1 ≤ N ≤ 100000). Каждая из следующих N
+строк содержит одно натуральное число, не превышающее 108.
+Пример входного файла:
+554
+13
+7
+10Для указанных данных можно выбрать тройки 4, 13 и 7 (сумма 24), 4, 13 и 10 (сумма 27), 4,
+7 и 10 (сумма 21) или 13, 7 и 10 (сумма 30). Наименьшая из сумм – 21.
+В ответе укажите два числа: сначала искомое значение для файла А, затем для файла B.
+'''
+# # TODO: Ответ – 963 302658
+##def solution(lst):
+##    lst.sort()
+##    res = []
+##    all_remains = [i for i in product([0, 1, 2], repeat=3) if sum(i) % 3 == 0]
+##    for remains in all_remains:
+##        summ = 0
+##        c = 0
+##        for n in lst:
+##            if n % 3 == remains[c]:
+##                summ += n
+##                c += 1
+##            if c == 3:
+##                res.append(summ)
+##                break
+##    return min(res)
+##    
+##    
+##
+##
+##with open('data/27-53t.txt') as f:
+##    n = int(f.readline())
+##    data = list(map(int, f.readlines()))
+##print(solution(data))
+##with open('data/27-53a.txt') as f:
+##    n = int(f.readline())
+##    data = list(map(int, f.readlines()))
+##print(solution(data))
+##with open('data/27-53b.txt') as f:
+##    n = int(f.readline())
+##    data = list(map(int, f.readlines()))
+##print(solution(data))
+
