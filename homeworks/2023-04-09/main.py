@@ -1,5 +1,4 @@
-import re
-from itertools import product, permutations
+from itertools import product, permutations, combinations
 from math import ceil
 from functools import lru_cache
 
@@ -15,7 +14,7 @@ def to_base(n, b):
 
 def is_prime(n):
     i = 2
-    while i**2 <= n:
+    while i ** 2 <= n:
         if not n % i:
             return False
         i += 1
@@ -438,4 +437,71 @@ XYZWOP. Определите самый часто встречающийся с
 В данном случае есть один подходящий пиксель (строка 2, позиция 4) с кодом цвета #00FF00, окруженный с
 двух сторон тройками пикселей с кодом #0000FF. Ответ: 1 2.
 """
-# # FIXME: Ответ —
+# # TODO: Ответ — 1487 9980
+# screen = [['#FFFFFF' for _ in range(10000)] for _ in range(10000)]
+# with open('data/26-87.txt') as f:
+#     n = int(f.readline())
+#     data = list(map(lambda x: x.split(), f.readlines()))
+# for i in data:
+#     screen[int(i[0]) - 1][int(i[1]) - 1] = i[2]
+# res = []
+# for i, row in enumerate(screen):
+#     c = 0
+#     for i_col in range(3, len(row) - 3):
+#         if row[i_col] == '#00FF00' and all(row[i_col - right] == '#0000FF' for right in range(1, 4)) and \
+#                 all(row[i_col + left] == '#0000FF' for left in range(1, 4)):
+#             c += 1
+#     res.append((i + 1, c))
+# print(sum(i[1] for i in res), max(res[::-1], key=lambda x: x[1])[0])
+
+
+"""
+27 Имеется набор данных, состоящий из троек положительных целых чисел. Необходимо выбрать из каждой
+тройки два числа так, чтобы сумма всех выбранных чисел не делилась на 5 и при этом была максимально
+возможной. Гарантируется, что искомую сумму получить можно. Программа должна напечатать одно число –
+максимально возможную сумму, соответствующую условиям задачи.
+Входные данные. Даны два входных файла (файл A и файл B), каждый из которых содержит в первой строке
+количество троек N (1 ≤ N ≤ 100000). Каждая из следующих N строк содержит три натуральных числа, не
+превышающих 10 000.
+Пример входного файла:
+6
+8 3 4
+4 8 12
+9 5 6
+2 8 3
+12 3 5
+1 4 11
+Для указанных входных данных значением искомой суммы должно быть число 89.
+В ответе укажите два числа:сначала искомое значение для файла А, затем для файла B.
+"""
+# # TODO: Ответ — 25034 76468978
+def solution(n, data):
+    summ = [0]
+    for elem in data:
+        new_summ = []
+        while summ:
+            this = summ.pop()
+            for double in combinations(elem, r=2):
+                new_summ.append(this+sum(double))
+        summ = []
+        for i in range(5):
+            gen = [j for j in new_summ if j % 5 == i]
+            if gen:
+                summ.append(max(gen))
+    return max(i for i in summ if i % 5)
+
+
+with open('data/27-29t.txt') as f:
+    n = int(f.readline())
+    data = list(map(lambda x: list(map(int, x.split())), f.readlines()))
+print(solution(n, data))
+
+with open('data/27-29a.txt') as f:
+    n = int(f.readline())
+    data = list(map(lambda x: list(map(int, x.split())), f.readlines()))
+print(solution(n, data))
+
+with open('data/27-29b.txt') as f:
+    n = int(f.readline())
+    data = list(map(lambda x: list(map(int, x.split())), f.readlines()))
+print(solution(n, data))
