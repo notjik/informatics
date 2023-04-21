@@ -1,3 +1,5 @@
+from functools import reduce
+
 """
 1) Имеется набор данных, состоящий из пар положительных целых чисел.
 Необходимо выбрать из каждой пары ровно одно число так, чтобы сумма всех
@@ -232,31 +234,160 @@
 Для указанных данных искомая сумма равна 20. 
 """
 ### TODO: Ответ — 75960 203343860
-def solution5(n, data):
-    summ = [0]
-    for elem in data:
-        new_summ = []
-        while summ:
-            this = summ.pop()
-            for num in elem:
-                new_summ.append(this + num)
-        for i in range(5):
-            gen = [num for num in new_summ if num % 5 == i]
-            if gen:
-                summ.append(min(gen))
-    return min(num for num in summ if not num % 5)
+##def solution5(n, data):
+##    summ = [0]
+##    for elem in data:
+##        new_summ = []
+##        while summ:
+##            this = summ.pop()
+##            for num in elem:
+##                new_summ.append(this + num)
+##        for i in range(5):
+##            gen = [num for num in new_summ if num % 5 == i]
+##            if gen:
+##                summ.append(min(gen))
+##    return min(num for num in summ if not num % 5)
+##
+##with open('data/5/27-5t.txt') as f:
+##    n = int(f.readline())
+##    data = list(map(lambda x: list(map(int, x.split())), f.readlines()))
+##print(solution5(n, data))
+##
+##with open('data/5/27-5a.txt') as f:
+##    n = int(f.readline())
+##    data = list(map(lambda x: list(map(int, x.split())), f.readlines()))
+##print(solution5(n, data))
+##
+##with open('data/5/27-5b.txt') as f:
+##    n = int(f.readline())
+##    data = list(map(lambda x: list(map(int, x.split())), f.readlines()))
+##print(solution5(n, data))
 
-with open('data/5/27-5t.txt') as f:
-    n = int(f.readline())
-    data = list(map(lambda x: list(map(int, x.split())), f.readlines()))
-print(solution5(n, data))
 
-with open('data/5/27-5a.txt') as f:
-    n = int(f.readline())
-    data = list(map(lambda x: list(map(int, x.split())), f.readlines()))
-print(solution5(n, data))
+"""
+6) [37] Имеется набор данных, состоящий из положительных целых чисел,
+каждое из которых не превышает 1000. Требуется найти для этой
+последовательности контрольное значение – наибольшее число R,
+удовлетворяющее следующим условиям:
+– R – произведение двух различных переданных элементов
+последовательности («различные» означает, что не рассматриваются
+квадраты переданных чисел, произведения различных, но равных по
+величине элементов допускаются);
+– R делится на 6.
+Входные данные: Даны два входных файла: файл A (27-6a.txt) и
+файл B (27-6b.txt), каждый из которых содержит в первой строке
+количество чисел N (1 ≤ N ≤ 100000). Каждая из следующих N строк
+содержит одно натуральное число, не превышающее 1000.
+Пример входного файла:
+6
+60
+17
+3
+7
+9
+60
+Для указанных данных искомое контрольное значение равно 3600. 
+В ответе укажите два числа: сначала контрольное значение для файла А,
+затем для файла B.
+"""
+### TODO: Ответ — 782040 997002
+##def divs_in_tuple(n):
+##    r = []
+##    i = 1
+##    while i ** 2 <= n:
+##        if i ** 2 == n:
+##            r.append((i, i))
+##        elif not n % i:
+##            r.append((n // i, i))
+##        i += 1
+##    return r
+##
+##
+##def solution6(n, data):
+##    res = []
+##    dels = divs_in_tuple(6)
+##    for dl in dels:
+##        tmp = data[:]
+##        num1 = max(((i, elem) for i, elem in enumerate(tmp) if not elem % dl[0]),
+##                   key=lambda x: x[1])
+##        tmp.pop(num1[0])
+##        num2 = max(i for i in tmp if not i % dl[1])
+##        res.append(num1[1]*num2)
+##    return max(res)
+##
+##
+##with open('data/6/27.txt') as f:
+##    n = int(f.readline())
+##    data = list(map(int, f.readlines()))
+##print(solution6(n, data))
+##
+##with open('data/6/27-6a.txt') as f:
+##    n = int(f.readline())
+##    data = list(map(int, f.readlines()))
+##print(solution6(n, data))
+##
+##with open('data/6/27-6b.txt') as f:
+##    n = int(f.readline())
+##    data = list(map(int, f.readlines()))
+##print(solution6(n, data))
 
-with open('data/5/27-5b.txt') as f:
+
+"""
+7) [51] Имеется набор данных, состоящий из положительных целых чисел, каждое из которых не превышает 1000. Требуется найти для этой последовательности контрольное значение – наибольшее число R, удовлетворяющее следующим условиям:
+– R – произведение двух различных переданных элементов последовательности («различные» означает, что не рассматриваются квадраты переданных чисел, произведения различных, но равных по величине элементов допускаются);
+– R делится на 7 и не делится на 49.
+Если такое произведение получить невозможно, считается, что контрольное значение R = 1.
+Входные данные: Даны два входных файла: файл A (27-7a.txt) и файл B (27-7b.txt), каждый из которых содержит в первой строке количество чисел N (1 ≤ N ≤ 100000). Каждая из следующих N строк содержит одно натуральное число, не превышающее 1000.
+Пример входного файла:
+6
+60
+17
+3
+7
+9
+60
+Для указанных данных искомое контрольное значение равно 420. 
+В ответе укажите два числа: сначала контрольное значение для файла А, затем для файла B.
+"""
+### FIXME: Ответ — 782040 997002
+def divs_in_tuple(n):
+    r = []
+    i = 1
+    while i ** 2 <= n:
+        if i ** 2 == n:
+            r.append((i, i))
+        elif not n % i:
+            r.append((n // i, i))
+        i += 1
+    return r
+
+
+def solution7(n, data):
+    res = []
+    ndels = [49]
+    prod = lambda a, b: a * b
+    dels = [i for i in divs_in_tuple(7) if reduce(prod, i) not in ndels]
+    for dl in dels:
+        tmp = data[:]
+        num1 = max(((i, elem) for i, elem in enumerate(tmp) if not elem % dl[0] and all(elem % j for j in ndels)),
+                   key=lambda x: x[1])
+        tmp.pop(num1[0])
+        num2 = max(i for i in tmp if not i % dl[1])
+        res.append(num1[1]*num2)
+    return max(res)
+
+
+with open('data/7/27.txt') as f:
     n = int(f.readline())
-    data = list(map(lambda x: list(map(int, x.split())), f.readlines()))
-print(solution5(n, data))
+    data = list(map(int, f.readlines()))
+print(solution7(n, data))
+
+with open('data/7/27-7a.txt') as f:
+    n = int(f.readline())
+    data = list(map(int, f.readlines()))
+print(solution7(n, data))
+
+with open('data/7/27-7b.txt') as f:
+    n = int(f.readline())
+    data = list(map(int, f.readlines()))
+print(solution7(n, data))
