@@ -369,7 +369,7 @@ def solution7(n, data):
     dels = [i for i in divs_in_tuple(7) if reduce(prod, i) not in ndels]
     for dl in dels:
         tmp = data[:]
-        num1 = max(((i, elem) for i, elem in enumerate(tmp) if not elem % dl[0] and all(elem % j for j in ndels)),
+        num1 = max(((i, elem) for i, elem in enumerate(tmp) if not elem % dl[0]),
                    key=lambda x: x[1])
         tmp.pop(num1[0])
         num2 = max(i for i in tmp if not i % dl[1])
