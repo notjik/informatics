@@ -349,45 +349,73 @@ from functools import reduce
 Для указанных данных искомое контрольное значение равно 420. 
 В ответе укажите два числа: сначала контрольное значение для файла А, затем для файла B.
 """
-### FIXME: Ответ — 782040 997002
-def divs_in_tuple(n):
-    r = []
-    i = 1
-    while i ** 2 <= n:
-        if i ** 2 == n:
-            r.append((i, i))
-        elif not n % i:
-            r.append((n // i, i))
-        i += 1
-    return r
+### TODO: Ответ — 692286 952567
+##def solution7(n, data):
+##    res = []
+##    tmp = data[:]
+##    num1 = max(((i, elem) for i, elem in enumerate(tmp) if not elem % 7 and elem % 49),
+##                key=lambda x: x[1])
+##    tmp.pop(num1[0])
+##    num2 = max(i for i in tmp if i % 7)
+##    return num1[1]*num2
+##
+##
+##with open('data/7/27.txt') as f:
+##    n = int(f.readline())
+##    data = list(map(int, f.readlines()))
+##print(solution7(n, data))
+##
+##with open('data/7/27-7a.txt') as f:
+##    n = int(f.readline())
+##    data = list(map(int, f.readlines()))
+##print(solution7(n, data))
+##
+##with open('data/7/27-7b.txt') as f:
+##    n = int(f.readline())
+##    data = list(map(int, f.readlines()))
+##print(solution7(n, data))
 
 
-def solution7(n, data):
-    res = []
-    ndels = [49]
-    prod = lambda a, b: a * b
-    dels = [i for i in divs_in_tuple(7) if reduce(prod, i) not in ndels]
-    for dl in dels:
-        tmp = data[:]
-        num1 = max(((i, elem) for i, elem in enumerate(tmp) if not elem % dl[0]),
-                   key=lambda x: x[1])
-        tmp.pop(num1[0])
-        num2 = max(i for i in tmp if not i % dl[1])
-        res.append(num1[1]*num2)
-    return max(res)
+"""
+8) [55] Имеется набор данных, состоящий из положительных целых чисел, каждое из которых не превышает 1000.
+Они представляют собой результаты измерений, выполняемых прибором с интервалом 1 минута.
+Требуется найти для этой последовательности контрольное значение – наименьшую сумму квадратов двух
+результатов измерений, выполненных с интервалом не менее, чем в 5 минут.
+Входные данные: Даны два входных файла: файл A (27-8a.txt) и файл B (27-8b.txt), каждый из которых
+содержит в первой строке количество чисел N (5 ≤ N ≤ 100000). Каждая из следующих N строк содержит одно
+натуральное число, не превышающее 1000.
+Пример входного файла:
+9
+12
+45
+5
+4
+21
+20
+10
+12
+26
+Для указанных данных искомое контрольное значение равно 169. 
+В ответе укажите два числа: сначала контрольное значение для файла А, затем для файла B.
+"""
+### TODO: Ответ — 11009 200
+def solution8(n, data):
+    mn1 = min(((i, elem) for i, elem in enumerate(data)), key=lambda x: x[1])
+    search2 = []
+    if mn1[0]-5 >= 0:
+        search2 += data[:mn1[0]-5]
+    if mn1[0]+6 <= len(data):
+        search2 += data[mn1[0]+6:]
+    mn2 = min(i for i in search2)
+    return mn1[1]**2 + mn2**2
 
 
-with open('data/7/27.txt') as f:
+with open('data/8/27-8a.txt') as f:
     n = int(f.readline())
     data = list(map(int, f.readlines()))
-print(solution7(n, data))
+print(solution8(n, data))
 
-with open('data/7/27-7a.txt') as f:
+with open('data/8/27-8b.txt') as f:
     n = int(f.readline())
     data = list(map(int, f.readlines()))
-print(solution7(n, data))
-
-with open('data/7/27-7b.txt') as f:
-    n = int(f.readline())
-    data = list(map(int, f.readlines()))
-print(solution7(n, data))
+print(solution8(n, data))
