@@ -486,12 +486,29 @@ F(n) = 5·n + 2·F(n–5), если n ≥ 1 и нечётно.
 В данном случае можно купить не более четырёх товаров, из них не более двух товаров типа A. Минимальная
 цена такой покупки 110 рублей (покупаем товары 10 A, 20 B, 30 C, 50 A). Останется 0 рублей. Ответ: 2 0.
 """
-# # FIXME: Ответ —
-# with open('data/26-64.txt') as f:
-#     N, M = map(int, f.readline().split())
-#     data = list(map(lambda x: (int(x.split()[0]), x.split()[1]), f.readlines()))
-# data.sort()
-# print(data, M)
+# # TODO: Ответ — 35 44
+with open('data/26-64.txt') as f:
+    n, m = map(int, f.readline().split())
+    data = sorted(map(lambda x: (int(x.split()[0]), x.split()[1]), f.readlines()))
+count = {}
+s = i = 0
+while s + data[i][0] <= m:
+    s += data[i][0]
+    i += 1
+    count[data[i][1]] = count.get(data[i][1], 0) + 1
+rest = [data[x] for x in range(i, n) if data[x][1] == 'A']
+i -= 1
+while rest and i >= 0:
+    val, tp = data[i]
+    if tp != 'A':
+        new_val, new_tp = rest[0]
+        if s + new_val - val <= m:
+            s = s + new_val - val
+            count['A'] += 1
+            count[tp] -= 1
+            rest.pop(0)
+    i -= 1
+print(count['A'], m - s)
 
 
 """
@@ -514,25 +531,25 @@ F(n) = 5·n + 2·F(n–5), если n ≥ 1 и нечётно.
 В ответе укажите два числа:сначала искомое значение для файла А, затем для файла B
 """
 # # TODO: Ответ — 412891 1249650958
-def solution(n, data):
-    s = {(0, 0): 0}.values()
-    for elem in data:
-        t = [x + y + z for x in s for y, z in combinations(elem, r=2)]
-        s = {(x % 7, x % 10): x for x in sorted(t)}.values()
-    return max(x for x in s if (x % 7 == 3 and not x % 10 == 5) or (not x % 7 == 3 and x % 10 == 5))
-
-
-with open('data/27.txt') as f:
-    n = int(f.readline())
-    data = list(map(lambda x: tuple(map(int, x.split())), f.readlines()))
-print(solution(n, data))
-
-with open('data/27-69a.txt') as f:
-    n = int(f.readline())
-    data = list(map(lambda x: tuple(map(int, x.split())), f.readlines()))
-print(solution(n, data))
-
-with open('data/27-69b.txt') as f:
-    n = int(f.readline())
-    data = list(map(lambda x: tuple(map(int, x.split())), f.readlines()))
-print(solution(n, data))
+##def solution(n, data):
+##    s = {(0, 0): 0}.values()
+##    for elem in data:
+##        t = [x + y + z for x in s for y, z in combinations(elem, r=2)]
+##        s = {(x % 7, x % 10): x for x in sorted(t)}.values()
+##    return max(x for x in s if (x % 7 == 3 and not x % 10 == 5) or (not x % 7 == 3 and x % 10 == 5))
+##
+##
+##with open('data/27.txt') as f:
+##    n = int(f.readline())
+##    data = list(map(lambda x: tuple(map(int, x.split())), f.readlines()))
+##print(solution(n, data))
+##
+##with open('data/27-69a.txt') as f:
+##    n = int(f.readline())
+##    data = list(map(lambda x: tuple(map(int, x.split())), f.readlines()))
+##print(solution(n, data))
+##
+##with open('data/27-69b.txt') as f:
+##    n = int(f.readline())
+##    data = list(map(lambda x: tuple(map(int, x.split())), f.readlines()))
+##print(solution(n, data))
