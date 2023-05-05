@@ -461,18 +461,19 @@ N строк записано одно целое число, не превыш�
 Ответ: 4.
 В ответе укажите два числа: сначала искомое значение для файла А, затем для файла B.
 """
-# # TODO: Ответ — 614
+# # TODO: Ответ — 615 12469952
 def solution(n, k, data):
-    pref = [0]
+    d = [0] * k
+    s = 0
+    c = 0
     for i in data:
-        pref += [pref[-1] + i]
-    res = []
-    for i in range(n):
-        for j in range(i+1, n):
-            summ = (pref[j]-pref[i])
-            if summ % k == 0:
-                res.append(summ)
-    return len(res)
+        s += i
+        if s % k == 0:
+            c += 1
+        c += d[s % k]
+        d[s % k] += 1
+    return c
+
 
 with open('data/27-97t.txt') as f:
     n, k = map(int, f.readline().split())
