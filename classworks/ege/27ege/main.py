@@ -449,23 +449,17 @@ from functools import reduce
 В ответе укажите два числа: сначала контрольное значение для файла А,
 затем для файла B.
 """
-### FIXME: Ответ — 
+### TODO: Ответ — 2465 121
 def solution9(n, data):
-##    mins_odd = sorted(((i, data[i]) for i in range(len(data)) if data[i] & 1), key=lambda x: (x[1], x[0]))
-##    mn = 10**10
-##    for i, odd1 in enumerate(mins_odd):
-##        old = None
-##        for odd2 in mins_odd[i+1:]:
-##            if odd2[0] - odd1[0] >= 6:
-##                mn = min(mn, odd1[1]*odd2[1])
-##                break
-##    return mn
-    mn = (10**10, 0, 0)
-    for i, elem1 in enumerate(data):
-        for elem2 in data[i+6:]:
-            if (elem1 * elem2) & 1:
-                if mn[0] > elem1 * elem2:
-                    mn = (elem1 * elem2, elem1, elem2)
+    mins_odd = sorted(((i, data[i]) for i in range(len(data)) if data[i] & 1), key=lambda x: (x[1], x[0]))
+    mn = 10 ** 10
+    for i, odd1 in enumerate(mins_odd):
+        for odd2 in mins_odd[i + 1:]:
+            if abs(odd2[0] - odd1[0]) >= 6:
+                mn = min(mn, odd1[1] * odd2[1])
+                break
+        if odd1[1] >= mn:
+            break
     return mn
 
 
