@@ -399,23 +399,87 @@ from functools import reduce
 В ответе укажите два числа: сначала контрольное значение для файла А, затем для файла B.
 """
 ### TODO: Ответ — 11009 200
-def solution8(n, data):
-    mn1 = min(((i, elem) for i, elem in enumerate(data)), key=lambda x: x[1])
-    search2 = []
-    if mn1[0]-5 >= 0:
-        search2 += data[:mn1[0]-5]
-    if mn1[0]+6 <= len(data):
-        search2 += data[mn1[0]+6:]
-    mn2 = min(i for i in search2)
-    return mn1[1]**2 + mn2**2
+##def solution8(n, data):
+##    mn1 = min(((i, elem) for i, elem in enumerate(data)), key=lambda x: x[1])
+##    search2 = []
+##    if mn1[0]-5 >= 0:
+##        search2 += data[:mn1[0]-5]
+##    if mn1[0]+6 <= len(data):
+##        search2 += data[mn1[0]+6:]
+##    mn2 = min(i for i in search2)
+##    return mn1[1]**2 + mn2**2
+##
+##
+##with open('data/8/27-8a.txt') as f:
+##    n = int(f.readline())
+##    data = list(map(int, f.readlines()))
+##print(solution8(n, data))
+##
+##with open('data/8/27-8b.txt') as f:
+##    n = int(f.readline())
+##    data = list(map(int, f.readlines()))
+##print(solution8(n, data))
 
 
-with open('data/8/27-8a.txt') as f:
+"""
+9) [60] На спутнике «Восход» установлен прибор, предназначенный для измерения
+солнечной активности. Каждую минуту прибор передаёт по каналу связи
+неотрицательное целое число – количество энергии солнечного излучения,
+полученной за последнюю минуту, измеренное в условных единицах. Временем,
+в течение которого происходит передача, можно пренебречь. Необходимо найти
+в заданной серии показаний прибора минимальное нечётное произведение двух
+показаний, между моментами передачи которых прошло не менее 6 минут.
+Если получить такое произведение не удаётся, ответ считается равным –1.
+Входные данные: Даны два входных файла: файл A (27-9a.txt) и
+файл B (27-9b.txt), каждый из которых содержит в первой строке количество
+чисел N (7 ≤ N ≤ 100000). Каждая из следующих N строк содержит одно
+натуральное число, не превышающее 1000.
+Пример входного файла:
+11
+12
+45
+17
+23
+21
+20
+19
+12
+26
+Для указанных данных искомое контрольное значение равно 95. 
+В ответе укажите два числа: сначала контрольное значение для файла А,
+затем для файла B.
+"""
+### FIXME: Ответ — 
+def solution9(n, data):
+##    mins_odd = sorted(((i, data[i]) for i in range(len(data)) if data[i] & 1), key=lambda x: (x[1], x[0]))
+##    mn = 10**10
+##    for i, odd1 in enumerate(mins_odd):
+##        old = None
+##        for odd2 in mins_odd[i+1:]:
+##            if odd2[0] - odd1[0] >= 6:
+##                mn = min(mn, odd1[1]*odd2[1])
+##                break
+##    return mn
+    mn = (10**10, 0, 0)
+    for i, elem1 in enumerate(data):
+        for elem2 in data[i+6:]:
+            if (elem1 * elem2) & 1:
+                if mn[0] > elem1 * elem2:
+                    mn = (elem1 * elem2, elem1, elem2)
+    return mn
+
+
+with open('data/9/27.txt') as f:
     n = int(f.readline())
     data = list(map(int, f.readlines()))
-print(solution8(n, data))
+print(solution9(n, data))
 
-with open('data/8/27-8b.txt') as f:
+with open('data/9/27-9a.txt') as f:
     n = int(f.readline())
     data = list(map(int, f.readlines()))
-print(solution8(n, data))
+print(solution9(n, data))
+
+with open('data/9/27-9b.txt') as f:
+    n = int(f.readline())
+    data = list(map(int, f.readlines()))
+print(solution9(n, data))
