@@ -1,4 +1,4 @@
-from itertools import product
+from itertools import product, combinations
 from math import ceil
 from functools import lru_cache, reduce
 
@@ -22,6 +22,7 @@ def dels(x):
             r += [i, x // i]
         i += 1
     return r
+
 
 """
 1.  На рисунке справа схема дорог Н-ского района изображена в виде графа; в таблице слева содержатся
@@ -331,10 +332,9 @@ F(n) = F(n − 1) + n.
 Укажите количество таких чисел n из интервала 765 432 010 ≤ n ≤ 1 542 613 234, для которых F(n) не
 делится без остатка на 3.
 """
-### TODO: Ответ — 518120816
-n = 1542613235-765432010
-print(n - (n/3))
-
+### TODO: Ответ — 259060409
+##n = 1542613235-765432010
+##print(int(n / 3) + 1)
 
 """
 17.  В файле содержится последовательность из 10 000 целых положительных чисел. Каждое число не
@@ -343,14 +343,14 @@ print(n - (n/3))
 сумм элементов таких пар. В данной задаче под парой подразумевается два различных элемента
 последовательности. Порядок элементов в паре не важен.
 """
-### TODO: Ответ — 992 9995
+### TODO: Ответ — 9082691 19995
 ##with open('data/17.txt') as f:
 ##    data = list(map(int, f.readlines()))
 ##c = 0
 ##mx = 0
-##for i in range(len(data) - 1):
-##    summ = sum(data[i:i+1])
-##    if  summ & 1 and reduce(lambda a, b: a * b, data[i:i+1]) % 5 == 0:
+##for pairs in combinations(data, r=2):
+##    summ = sum(pairs)
+##    if summ & 1 and not reduce(lambda a, b: a * b, pairs) % 5:
 ##        c += 1
 ##        mx = max(mx, summ)
 ##print(c, mx)
@@ -375,7 +375,7 @@ print(n - (n/3))
 200 + 87 + 35 + 7 − 9 − 80 + 43  =  283, а минимальное при движении по маршруту
 200 + 8 − 69 + 7 − 17 − 32 − 43  =  54.
 """
-### TODO: Ответ — 3081 1656
+### TODO: Ответ — 2344 919
 
 
 """
@@ -501,14 +501,17 @@ ID процесса B Время выполнения процесса B (мс) 
 Для выполнения этого задания следует написать программу. Ниже приведѐн файл, который необходимо
 обработать с помощью данного алгоритма.
 """
-### TODO: Ответ — 569803
+### TODO: Ответ — 42
 ##with open('data/24.txt') as f:
 ##    s = f.read()
-##c = 0
-##for i, elem in enumerate(s[1:-1]):
-##    if elem != s[i-1] != s[i+1]:
-##        c += 1
-##print(c)
+##mx = 0
+##for i in range(len(s) - 1):
+##    j = i + 1
+##    while j < len(s) and s[j-1] != s[j]:
+##        j += 1
+##    j -= 1
+##    mx = max(mx, j - i + 1)
+##print(mx)
 
 
 """
@@ -554,17 +557,73 @@ ID процесса B Время выполнения процесса B (мс) 
 2 50
 """
 ### TODO: Ответ — 509 31
-with open('data/26.txt') as f:
-    s, n = map(int, f.readline().split())
-    data = list(map(int, f.readlines()))
-data.sort()
-res = c = i = 0
-while res + data[i] <= s:
-    res += data[i]
-    c += 1
-    i += 1
-res -= data[i]
-while res + data[i] <= s:
-    i += 1
-res += data[i-1]
-print(c, data[i-1])
+##with open('data/26.txt') as f:
+##    s, n = map(int, f.readline().split())
+##    data = list(map(int, f.readlines()))
+##data.sort()
+##res = c = i = 0
+##while res + data[i] <= s:
+##    res += data[i]
+##    c += 1
+##    i += 1
+##res -= data[i]
+##while res + data[i] <= s:
+##    i += 1
+##res += data[i-1]
+##print(c, data[i-1])
+
+
+"""
+27.  Набор данных состоит из нечѐтного количества пар натуральных чисел. Необходимо выбрать из
+каждой пары ровно одно число так, чтобы чѐтность суммы выбранных чисел совпадала с чѐтностью
+большинства выбранных чисел и при этом сумма выбранных чисел была как можно меньше.
+Определите минимальную сумму, которую можно получить при таком выборе. Гарантируется, что
+удовлетворяющий условиям выбор возможен.
+Входные данные.
+Первая строка входного файла содержит число N  — общее количество пар в наборе. Каждая из
+следующих N строк содержит два натуральных числа, не превышающих 10 000.
+Пример входного файла:
+5
+15 8
+5 11
+6 3
+7 2
+9 14
+Для указанных данных надо выбрать числа 8, 5, 3, 2 и 9. Большинство из них нечѐтны, сумма
+выбранных чисел равна 27 и тоже нечѐтна. В ответе надо записать число 27.
+Вам даны два входных файла (A и B), каждый из которых имеет описанную выше структуру. В ответе
+укажите два числа: сначала значение искомой суммы для файла A, затем для файла B.
+Предупреждение: для обработки файла B не следует использовать переборный алгоритм,
+вычисляющий сумму для всех возможных вариантов, поскольку написанная по такому алгоритму
+программа будет выполняться слишком долго.
+"""
+### TODO: Ответ — 61772 18484085
+def solution(N, data):
+    data = sorted((sorted(i) for i in data), key=lambda x: (x[1] - x[0]))
+    res = []
+    for elem in data:
+        res.append(elem[0])
+    i = 0
+    inf = (len([elem for elem in res if elem % 2 == 0]), len([elem for elem in res if elem % 2 == 1]))
+    while inf[sum(res) % 2] <= inf[1 if sum(res) % 2 == 0 else 0]:
+        if data[i][0] % 2 != data[i][1] % 2:
+            res[i] = data[i][1]
+            inf = (len([elem for elem in res if elem % 2 == 0]), len([elem for elem in res if elem % 2 == 1]))
+        i += 1
+    return sum(res), len([i for i in res if i % 2 == sum(res) % 2]), len(res)
+
+with open('data/27.txt') as f:
+    N = int(f.readline())
+    data = list(map(lambda x: list(map(int, x.split())), f.readlines()))
+print(solution(N, data))
+
+with open('data/27-A.txt') as f:
+    N = int(f.readline())
+    data = list(map(lambda x: list(map(int, x.split())), f.readlines()))
+print(solution(N, data))
+
+with open('data/27-B.txt') as f:
+    N = int(f.readline())
+    data = list(map(lambda x: list(map(int, x.split())), f.readlines()))
+print(solution(N, data))
+
