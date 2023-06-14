@@ -41,8 +41,3 @@ from itertools import product
 только число.
 '''
 ### TODO: Ответ – 16
-
-
-'''
-
-'''
