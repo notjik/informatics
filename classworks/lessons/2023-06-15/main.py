@@ -1,5 +1,7 @@
 from itertools import product
 from math import ceil
+from functools import lru_cache
+from copy import deepcopy
 
 """Task 1"""
 ### TODO: Ответ — 55
@@ -135,13 +137,130 @@ from math import ceil
 
 """Task 17"""
 ### TODO: Ответ — 13 9500
-with open('data/17_8504.txt') as f:
+##with open('data/17_8504.txt') as f:
+##    data = list(map(int, f.readlines()))
+##mn5 = min(i for i in data if i % 10 == 5 and 100 <= i < 1000)
+##c = 0
+##mxs = 0
+##for i in range(len(data) - 1):
+##    if any(100 <= data[i+j] < 1000 for j in range(2)) and sum(data[i:i+2]) % mn5 == 0:
+##        c += 1
+##        mxs = max(sum(data[i:i+2]), mxs)
+##print(c, mxs)
+
+
+"""Task 18"""
+### TODO: Ответ — 2227 898
+
+"""Task 19-21"""
+### TODO: Ответ —
+###  19) 18
+###  20) 6 14
+###  21) 13
+##@lru_cache(None)
+##def game(x):
+##    if x >= 55:
+##        return 0
+##    tmp = [game(x + 1), game(x + 4), game(x * 3)]
+##    ng = [i for i in tmp if i <= 0]
+##    if ng:
+##        return -max(ng)+1
+##    return -max(tmp)
+##
+##print(*[i for i in range(1, 55) if game(i) == -1])
+##print(*[i for i in range(1, 55) if game(i) == 2][:2])
+##print(min(i for i in range(1, 55) if game(i) == -2))
+
+
+"""Task 22"""
+### TODO: Ответ — 51
+
+
+"""Task 23"""
+### TODO: Ответ — 350
+##def f(x, end):
+##    if x == end:
+##        return 1
+##    if x > end or x == 12:
+##        return 0
+##    return f(x + 1, end) + f(x + 2, end) + f(x * 2, end) 
+##
+##print(f(2, 9) * f(9, 17))
+
+
+"""Task 24"""
+### TODO: Ответ — 57
+##with open('data/24_8510.txt') as f:
+##    s = f.read()
+##mx = 0
+##tmp = s[0]
+##for i in range(1, len(s)):
+##    tmp += s[i]
+##    if tmp[-2] in 'NPO' and tmp[-1] in 'NPO':
+##        tmp = tmp[-1]
+##    mx = max(mx, len(tmp))
+##print(mx)
+    
+
+"""Task 25"""
+### TODO: Ответ —
+###  12531596 49532
+###  12741586 50362
+###  1278156 5052
+###  12951576 51192
+##res = []
+##gap = [''.join(i) for i in product([''] + list(map(str, range(10))), repeat=1)]
+##print(gap)
+##for a in range(10):
+##    for b in range(10):
+##        for c in gap:
+##            n = int('12{}{}15{}6'.format(a, b, c))
+##            if n % 253 == 0:
+##                res.append([n, n // 253])
+##[print(*i) for i in sorted(res)]
+
+
+"""Task 26"""
+### TODO: Ответ — 389 133
+##with open('data/26_8512.txt') as f:
+##    K = int(f.readline())
+##    N = int(f.readline())
+##    orders = list(map(lambda x: tuple(map(int, x.split())), f.readlines()))
+##orders.sort()
+##ceils = [0] * K
+##c = 0
+##end = 0
+##for i in orders:
+##    relevants = list(filter(lambda x: x <= i[0], ceils))
+##    if relevants:
+##        index = ceils.index(relevants[0])
+##        ceils[index] = i[1] + 1
+##        c += 1
+##        end = index + 1
+##print(c, end)
+        
+
+"""Task 27"""
+def solution(K, N, data):
+    pass
+
+
+with open('data/27.txt') as f:
+    K = int(f.readline())
+    N = int(f.readline())
     data = list(map(int, f.readlines()))
-mn5 = min(i for i in data if i % 10 == 5 and 100 <= i < 1000)
-c = 0
-mxs = 0
-for i in range(len(data) - 1):
-    if any(100 <= data[i+j] < 1000 for j in range(2)) and sum(data[i:i+2]) % mn5 == 0:
-        c += 1
-        mxs = max(sum(data[i:i+2]), mxs)
-print(c, mxs)
+print(solution(K, N, data))
+
+with open('data/27_A_8513.txt') as f:
+    K = int(f.readline())
+    N = int(f.readline())
+    data = list(map(int, f.readlines()))
+print(solution(K, N, data))
+
+with open('data/27_B_8513.txt') as f:
+    K = int(f.readline())
+    N = int(f.readline())
+    data = list(map(int, f.readlines()))
+print(solution(K, N, data))
+
+
