@@ -451,34 +451,34 @@ from math import factorial
 В ответе укажите два числа: сначала контрольное значение для файла А,
 затем для файла B.
 """
-### TODO: Ответ — 2465 121
-##def solution9(n, data):
-##    mins_odd = sorted(((i, data[i]) for i in range(len(data)) if data[i] & 1), key=lambda x: (x[1], x[0]))
-##    mn = 10 ** 10
-##    for i, odd1 in enumerate(mins_odd):
-##        for odd2 in mins_odd[i + 1:]:
-##            if abs(odd2[0] - odd1[0]) >= 6:
-##                mn = min(mn, odd1[1] * odd2[1])
-##                break
-##        if odd1[1] >= mn:
-##            break
-##    return mn
-##
-##
-##with open('data/9/27.txt') as f:
-##    n = int(f.readline())
-##    data = list(map(int, f.readlines()))
-##print(solution9(n, data))
-##
-##with open('data/9/27-9a.txt') as f:
-##    n = int(f.readline())
-##    data = list(map(int, f.readlines()))
-##print(solution9(n, data))
-##
-##with open('data/9/27-9b.txt') as f:
-##    n = int(f.readline())
-##    data = list(map(int, f.readlines()))
-##print(solution9(n, data))
+# # TODO: Ответ — 2465 121
+def solution9(n, data):
+   mins_odd = sorted(((i, data[i]) for i in range(len(data)) if data[i] & 1), key=lambda x: (x[1], x[0]))
+   mn = 10 ** 10
+   for i, odd1 in enumerate(mins_odd):
+       for odd2 in mins_odd[i + 1:]:
+           if abs(odd2[0] - odd1[0]) >= 6:
+               mn = min(mn, odd1[1] * odd2[1])
+               break
+       if odd1[1] >= mn:
+           break
+   return mn
+
+
+with open('data/9/27.txt') as f:
+   n = int(f.readline())
+   data = list(map(int, f.readlines()))
+print(solution9(n, data))
+
+with open('data/9/27-9a.txt') as f:
+   n = int(f.readline())
+   data = list(map(int, f.readlines()))
+print(solution9(n, data))
+
+with open('data/9/27-9b.txt') as f:
+   n = int(f.readline())
+   data = list(map(int, f.readlines()))
+print(solution9(n, data))
 
 
 """
