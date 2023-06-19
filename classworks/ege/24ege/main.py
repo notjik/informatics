@@ -1,5 +1,34 @@
 import re
 
+"""
+Текстовый файл 24-211.txt содержит строку из набора A, B, C, D, E, F, всего не более чем из 106 символов. 
+Найдите максимальное количество подряд идущих четвёрок символов ABEC, BDAC, CAFB, CFBA, стоящих одна за другой и 
+пересекающихся с соседними четвёрками одной буквой. Например, в строке BDEABECAFBDACBD такие пары составляют подстроку 
+ABECAFBDAC = ABEC + СAFB + ВDAC, итого 3 четвёрки.
+"""
+# # TODO: Ответ — 81
+with open('data/24-211.txt') as f:
+    s = f.read()
+COMBINATIONS = 'ABEC, BDAC, CAFB, CFBA'.split(', ')
+patterns = COMBINATIONS[:]
+c = 1
+while True:
+    tmp = []
+    for elem in patterns:
+        for item in COMBINATIONS:
+            if elem[-1] != item[0]:
+                continue
+            if elem[:-1] + item in s:
+                tmp.append(elem[:-1] + item)
+    if not tmp:
+        print(patterns)
+        print(c)
+        break
+    patterns = tmp[:]
+    c += 1
+    print(len(tmp))
+
+
 '''
 1) В текстовом файле  k7-0.txt находится цепочка из символов латинского
 алфавита A, B, C. Найдите длину самой длинной подцепочки, состоящей из

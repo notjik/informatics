@@ -109,7 +109,7 @@ from copy import deepcopy
 ##    exp = int('99658' + x + '29', 15) + int('102' + x + '023', 15)
 ##    if exp % 14 == 0:
 ##        print(x, exp // 14)
-        
+
 
 """Task 15"""
 ### TODO: Ответ — 16
@@ -200,7 +200,7 @@ from copy import deepcopy
 ##        tmp = tmp[-1]
 ##    mx = max(mx, len(tmp))
 ##print(mx)
-    
+
 
 """Task 25"""
 ### TODO: Ответ —
@@ -238,11 +238,24 @@ from copy import deepcopy
 ##        c += 1
 ##        end = index + 1
 ##print(c, end)
-        
+
 
 """Task 27"""
+# # TODO: Ответ — 1219 2090920
+def solution_bad(K, N, data):
+    res = 0
+    for i in range(N - K):
+        for j in range(i + K, N):
+            res = max(res, data[i] + data[j])
+    return res
+
+
 def solution(K, N, data):
-    pass
+    s_data = sorted([(i, elem) for i, elem in enumerate(data)], key=lambda x: -x[1])
+    for i in range(N):
+        if abs(s_data[i][0] - s_data[i + 1][0]) > K:
+            return s_data[i][1] + s_data[i + 1][1]
+    return -1
 
 
 with open('data/27.txt') as f:
@@ -262,5 +275,3 @@ with open('data/27_B_8513.txt') as f:
     N = int(f.readline())
     data = list(map(int, f.readlines()))
 print(solution(K, N, data))
-
-

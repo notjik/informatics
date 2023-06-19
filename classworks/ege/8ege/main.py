@@ -1,3 +1,6 @@
+from itertools import product
+
+
 def to_base(n, b=2):
     alpha = '0123456789abcdefghijklmnopqrstuvwxyz'
     res = alpha[n % b]
@@ -13,7 +16,6 @@ def to_base(n, b=2):
 ##print(int('20202', 3))
 
 
-
 ##from itertools import product
 ##
 ##lt = 'КЛОУН'
@@ -22,7 +24,6 @@ def to_base(n, b=2):
 ##    if s.count('У') > 0:
 ##        c += 1
 ##print(c)
-
 
 
 ##from itertools import permutations as per
@@ -36,7 +37,6 @@ def to_base(n, b=2):
 ##print(c)
 
 
-
 ##from itertools import permutations as per
 ##
 ##lt = 'АБАК'
@@ -46,7 +46,6 @@ def to_base(n, b=2):
 ##    if 'АА' not in s:
 ##        c += 1
 ##print(c)
-
 
 
 ##from itertools import product
@@ -67,15 +66,32 @@ def to_base(n, b=2):
 ##print(c)
 
 
+# from itertools import product
+#
+# num = '012345678'
+# c = 0
+# for s in product(num, repeat=5):
+#     if s[0] == '0':
+#         continue
+#
+#     if s[0] not in '1357' and s[-1] not in '18' and s.count('3') <= 1:
+#         c += 1
+# print(c)
 
-from itertools import product
 
-num = '012345678'
+"""
+№ 6591 Пробник ИМЦ СПб (Уровень: Средний) 
+Определите количество пятизначных чисел, записанных в семеричной системе счисления, в записи которых: 
+ 
+1. только одна цифра 6; 
+ 
+2. сумма четных цифр числа меньше суммы нечетных цифр числа.
+"""
+# # TODO: Ответ — 1390
 c = 0
-for s in product(num, repeat=5):
-    if s[0] == '0':
+for n in product(range(7), repeat=5):
+    if n[0] == 0:
         continue
-    
-    if s[0] not in '1357' and s[-1] not in '18' and s.count('3') <= 1:
+    if n.count(6) == 1 and sum(i for i in n if i % 2 == 0) < sum(i for i in n if i % 2 != 0):
         c += 1
 print(c)
