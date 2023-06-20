@@ -185,22 +185,22 @@ a сумма элементов тройки не меньше максимал�
 B ответе запишите количество найденных троек, затем максимальную из сумм элементов таких троек. 
 В данной задаче под тройкой подразумевается три идущих подряд элемента последовательности.
 """
-### TODO: Ответ — 36
-with open('data/17.txt') as f:
-    data = list(map(int, f.readlines()))
-q = lambda x: 999 < x < 10000
-mx15 = max(elem for elem in data if abs(elem % 100) == 15)
-c = 0
-mxs = 0
-for i in range(len(data) - 2):
-    access = 0
-    for j in range(3):
-        access += 1 if q(data[i + j]) else 0
-    summ = sum(data[i:i+3])
-    if access == 1 and summ >= mx15:
-        c += 1
-        mxs = max(mxs, summ)
-print(c, mxs)
+# # TODO: Ответ — 36
+# with open('data/17.txt') as f:
+#     data = list(map(int, f.readlines()))
+# q = lambda x: 999 < x < 10000
+# mx15 = max(elem for elem in data if abs(elem % 100) == 15)
+# c = 0
+# mxs = 0
+# for i in range(len(data) - 2):
+#     access = 0
+#     for j in range(3):
+#         access += 1 if q(data[i + j]) else 0
+#     summ = sum(data[i:i+3])
+#     if access == 1 and summ >= mx15:
+#         c += 1
+#         mxs = max(mxs, summ)
+# print(c, mxs)
 
 
 """
