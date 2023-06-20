@@ -252,6 +252,41 @@ C. Умножить на 2
 
 
 """
+Задание 24.2
+Задание выполняется с использованием прилагаемых файлов.
+Текстовый файл состоит из символов T, U, V, W, X, Y и Z. Определите в прилагаемом файле максимальное количество идущих 
+подряд символов (длину непрерывной подпоследовательности), среди которых символ У встречается не более 150 раз.
+Для выполнения этого задания следует написать программу.
+"""
+# # TODO: Ответ — 244
+with open('data/24.txt') as f:
+    s = f.read()
+s = s.split('Y')
+mx = 0
+for i in range(len(s) - 151):
+    mx = max(mx, sum([len(j) for j in s[i:i+151]]) + 150)
+print(mx)
+
+
+"""
+Задание 24.3
+Задание выполняется с использованием прилагаемых файлов.
+Текстовый файл состоит из символов T, U, V, W, X, Y и Z. Определите в прилагаемом файле минимальное количество идущих 
+подряд символов (длину непрерывной подпоследовательности), среди которых символ У встречается не менее 150 раз.
+Для выполнения этого задания следует написать программу.
+"""
+# # TODO: Ответ — 243
+with open('data/24.txt') as f:
+    s = f.read()
+s = s.split('Y')
+mx = 0
+for i in range(len(s) - 149):
+    mx = max(mx, sum([len(j) for j in s[i:i+149]]) + 150)
+print(mx)
+
+
+
+"""
 25) № 7013 (Уровень: Средний)
 Назовём маской числа последовательность цифр,
 в которой также могут встречаться следующие символы:   
@@ -373,26 +408,26 @@ C. Умножить на 2
 Типовой пример имеет иллюстративный характер. Для выполнения задания используйте данные из прилагаемых файлов.
 """
 # # TODO: Ответ — 16 1345
-with open('data/26.txt') as f:
-    N = int(f.readline())
-    data = list(map(lambda x: tuple(map(int, x.split())), f.readlines()))
-data.sort(key=lambda x: (x[1] - x[0], x[0]))
-time = [0] * max(data, key=lambda x: x[1])[1]
-res = []
-for i in range(N):
-    if all(time[t] != 2 for t in range(data[i][0], data[i][1] + 1)):
-        time[data[i][0]] = time[data[i][1]] = 1
-        for v in range(data[i][0] + 1, data[i][1]):
-            time[v] = 2
-        res.append(data[i])
-res.sort()
-res.pop()
-data.sort(key=lambda x: -x[1])
-for elem in data:
-    if res[-1][1] <= elem[0]:
-        res.append(elem)
-        break
-print(len(res), max(res)[1])
+# with open('data/26.txt') as f:
+#     N = int(f.readline())
+#     data = list(map(lambda x: tuple(map(int, x.split())), f.readlines()))
+# data.sort(key=lambda x: (x[1] - x[0], x[0]))
+# time = [0] * max(data, key=lambda x: x[1])[1]
+# res = []
+# for i in range(N):
+#     if all(time[t] != 2 for t in range(data[i][0], data[i][1] + 1)):
+#         time[data[i][0]] = time[data[i][1]] = 1
+#         for v in range(data[i][0] + 1, data[i][1]):
+#             time[v] = 2
+#         res.append(data[i])
+# res.sort()
+# res.pop()
+# data.sort(key=lambda x: -x[1])
+# for elem in data:
+#     if res[-1][1] <= elem[0]:
+#         res.append(elem)
+#         break
+# print(len(res), max(res)[1])
 
 
 """
