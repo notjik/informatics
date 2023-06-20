@@ -372,20 +372,27 @@ C. Умножить на 2
 Конференц-зал освободится самое позднее на 180-й минуте, если состоятся мероприятия по заявкам 2, 4, 5.
 Типовой пример имеет иллюстративный характер. Для выполнения задания используйте данные из прилагаемых файлов.
 """
-# # TODO: Ответ — 16 1028
-# with open('data/26.txt') as f:
-#     N = int(f.readline())
-#     data = list(map(lambda x: tuple(map(int, x.split())), f.readlines()))
-# data.sort(key=lambda x: (x[1] - x[0], x[0]))
-# time = [0] * max(data, key=lambda x: x[1])[1]
-# res = []
-# for i in range(N):
-#     if all(time[t] != 2 for t in range(data[i][0], data[i][1] + 1)):
-#         time[data[i][0]] = time[data[i][1]] = 1
-#         for v in range(data[i][0] + 1, data[i][1]):
-#             time[v] = 2
-#         res.append(data[i])
-# print(len(res), max(res)[1])
+# # TODO: Ответ — 16 1345
+with open('data/26.txt') as f:
+    N = int(f.readline())
+    data = list(map(lambda x: tuple(map(int, x.split())), f.readlines()))
+data.sort(key=lambda x: (x[1] - x[0], x[0]))
+time = [0] * max(data, key=lambda x: x[1])[1]
+res = []
+for i in range(N):
+    if all(time[t] != 2 for t in range(data[i][0], data[i][1] + 1)):
+        time[data[i][0]] = time[data[i][1]] = 1
+        for v in range(data[i][0] + 1, data[i][1]):
+            time[v] = 2
+        res.append(data[i])
+res.sort()
+res.pop()
+data.sort(key=lambda x: -x[1])
+for elem in data:
+    if res[-1][1] <= elem[0]:
+        res.append(elem)
+        break
+print(len(res), max(res)[1])
 
 
 """
